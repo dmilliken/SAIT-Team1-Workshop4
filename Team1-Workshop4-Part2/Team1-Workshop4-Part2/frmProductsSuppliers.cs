@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team1_Workshop4_Part2;
 
 namespace Team1_Workshop4_Part2
 {
@@ -20,6 +21,8 @@ namespace Team1_Workshop4_Part2
 
         private Product product;
         private Supplier supplier;
+        private Packages package;
+
 
         // DM: Loads the products in the box so the user can choose
         private void LoadProductComboBox()
@@ -30,6 +33,24 @@ namespace Team1_Workshop4_Part2
                 allproducts = ProductDB.GetAllProducts();
                 comboBoxProductID.DataSource = allproducts;
                 comboBoxProductID.ValueMember = "ProductID";
+
+            } // end try
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        } // end method
+
+        // DM: Loads the packages in the dd box so the user can choose
+        private void LoadPackagesComboBox()
+        {
+            List<Packages> allpackages = new List<Packages>();
+            try
+            {
+                allpackages = PackagesDB.GetAllPackages();
+                comboBoxPackages.DataSource = allpackages;
+                comboBoxProductID.DisplayMember = "PkgName"; // this doesn't work?
+                comboBoxPackages.ValueMember = "PackageId"; 
             } // end try
             catch (Exception ex)
             {
@@ -69,7 +90,7 @@ namespace Team1_Workshop4_Part2
             } // end if 
 
 
-        }
+        } // end find products
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
@@ -84,7 +105,7 @@ namespace Team1_Workshop4_Part2
             {
                 product = addProductForm.product;
                 this.DisplayProduct();
-                this.LoadProductComboBox();
+                LoadProductComboBox();
             }//end if
             
         }// end method
@@ -159,6 +180,7 @@ namespace Team1_Workshop4_Part2
         {
             //DM: Show the products for the user to choose
            this.LoadProductComboBox();
+           this.LoadPackagesComboBox();
         } // end method 
 
         private void GetProduct(int ProductID)
@@ -223,8 +245,10 @@ namespace Team1_Workshop4_Part2
         private void btnNavPackages_Click(object sender, EventArgs e)
         {
             panelHome.Visible = false;
+            panelProducts.Visible = false;
             //panelProducts.Visible = false;
             panelPackages.Visible = true;
+            //this.LoadPackagesComboBox();
             
 
         }
@@ -232,7 +256,7 @@ namespace Team1_Workshop4_Part2
         private void btnNavHome_Click(object sender, EventArgs e)
         {
             panelPackages.Visible = false;
-           // panelProducts.Visible = false;
+            panelProducts.Visible = false;
             panelHome.Visible = true;
 
 
@@ -249,19 +273,79 @@ namespace Team1_Workshop4_Part2
             panelPackages.Visible = false;
             panelHome.Visible = false;
             // view the products panel
-           // panelProducts.Visible = true;
+            panelProducts.Visible = true;
 
         }
 
         private void btnNavSupplier_Click(object sender, EventArgs e)
         {
+            // close every other panel
             panelPackages.Visible = false;
-            //panelProducts.Visible = false;
+            panelProducts.Visible = false;
             panelHome.Visible = false;
 
         }
 
+        // get package info by ID in the combo box on the packages panel
+        private void GetPackageByID(int PackageId)
+        {
+            try
+            {
+                package = PackagesDB.GetPackage(PackageId);
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        } // end method
+
+        private void DisplayPackage()
+        {
+            // displays the package object data in the appropriate textboxes
+            txtPackageName.Text = package.PkgName;
+            txtStartDate.Text = package.PkgStartDate.ToString();
+            txtEndDate.Text = package.PkgEndDate;
+            txtPkgDesc.Text = package.PkgDesc;
+            txtPkgPrice.Text = package.PkgBasePrice.ToString("c");
+            txtCommission.Text = package.PkgAgencyCommission.ToString("c");
+
+            //enable the edit and delete buttons
+            btnEditPackage.Enabled = true;
+            btnDeletePackage.Enabled = true;
+        }
+
+        private void btnFindPackage_Click(object sender, EventArgs e)
+        {
+            // Fill the package info boxes with data from the package object
+
+            // clear the products listbox
+            lstPkgProducts.Items.Clear();
+
+            // Get the package ID
+            int PackageId;
+
+            if (Validator.IsPresent(comboBoxPackages))
+            {
+                // if the user set the combo box value, get and display info
+                PackageId = Convert.ToInt32(comboBoxPackages.SelectedValue);
+                this.GetPackageByID(PackageId);
+                if (package == null)
+                {
+                    MessageBox.Show("There was a problem getting Package #: " + PackageId + ". Please choose another one.");
+                } //end if
+                else 
+                {
+                    // if the package is not empty, display the package details in teh textboxes
+                    this.DisplayPackage();
+
+                }// end else
+
+
+            }//end if
+        } // end method
+
+        
 
     } // end class
 }
