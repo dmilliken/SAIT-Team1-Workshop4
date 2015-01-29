@@ -310,6 +310,18 @@ namespace Team1_Workshop4_Part2
             txtPkgPrice.Text = package.PkgBasePrice.ToString("c");
             txtCommission.Text = package.PkgAgencyCommission.ToString("c");
 
+            // Display the products in this package in the listbox
+            int PackageId = Convert.ToInt32(comboBoxPackages.SelectedValue);
+            List<Product> packageproducts = new List<Product>();
+            packageproducts = ProductDB.GetProductsByPackageID(PackageId);
+            
+            string line;
+            foreach (Product p in packageproducts)
+            {
+                line = Convert.ToString(p.ProdName);
+                lstPkgProducts.Items.Add(line);
+            } // end for
+
             //enable the edit and delete buttons
             btnEditPackage.Enabled = true;
             btnDeletePackage.Enabled = true;

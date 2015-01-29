@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageProducts = new System.Windows.Forms.TabPage();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnEditProduct = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
@@ -40,12 +37,8 @@
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.btnFindProducts = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.tabPageSupplier = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.lstSuppliers = new System.Windows.Forms.ListBox();
-            this.btnDeleteSupplier = new System.Windows.Forms.Button();
-            this.btnEditSupplier = new System.Windows.Forms.Button();
-            this.btnAddSupplier = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnNavHome = new System.Windows.Forms.Button();
             this.btnNavProducts = new System.Windows.Forms.Button();
@@ -60,10 +53,18 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnNavExit = new System.Windows.Forms.Button();
             this.panelPackages = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panelProducts = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lstPkgProducts = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtPkgPrice = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtCommission = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtPkgDesc = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtEndDate = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtStartDate = new System.Windows.Forms.TextBox();
             this.btnDeletePackage = new System.Windows.Forms.Button();
             this.btnEditPackage = new System.Windows.Forms.Button();
             this.btnAddPackage = new System.Windows.Forms.Button();
@@ -72,46 +73,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.comboBoxPackages = new System.Windows.Forms.ComboBox();
             this.txtPackageName = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtStartDate = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtEndDate = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtPkgDesc = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtCommission = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtPkgPrice = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.lstPkgProducts = new System.Windows.Forms.ListBox();
-            this.tabControl1.SuspendLayout();
-            this.tabPageProducts.SuspendLayout();
-            this.tabPageSupplier.SuspendLayout();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panelProducts = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pnlAddProdToPkg = new System.Windows.Forms.Panel();
             this.panelHome.SuspendLayout();
             this.panelPackages.SuspendLayout();
             this.panelProducts.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPageProducts);
-            this.tabControl1.Controls.Add(this.tabPageSupplier);
-            this.tabControl1.Location = new System.Drawing.Point(323, 579);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(550, 425);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPageProducts
-            // 
-            this.tabPageProducts.Controls.Add(this.btnClose);
-            this.tabPageProducts.Location = new System.Drawing.Point(4, 22);
-            this.tabPageProducts.Name = "tabPageProducts";
-            this.tabPageProducts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProducts.Size = new System.Drawing.Size(542, 399);
-            this.tabPageProducts.TabIndex = 1;
-            this.tabPageProducts.Text = "Products";
-            this.tabPageProducts.UseVisualStyleBackColor = true;
             // 
             // btnRefresh
             // 
@@ -122,17 +92,6 @@
             this.btnRefresh.Text = "Refresh List";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(413, 295);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(78, 32);
-            this.btnClose.TabIndex = 13;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnDeleteProduct
             // 
@@ -213,19 +172,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Product ID:";
             // 
-            // tabPageSupplier
-            // 
-            this.tabPageSupplier.Controls.Add(this.btnDeleteSupplier);
-            this.tabPageSupplier.Controls.Add(this.btnEditSupplier);
-            this.tabPageSupplier.Controls.Add(this.btnAddSupplier);
-            this.tabPageSupplier.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSupplier.Name = "tabPageSupplier";
-            this.tabPageSupplier.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSupplier.Size = new System.Drawing.Size(542, 399);
-            this.tabPageSupplier.TabIndex = 0;
-            this.tabPageSupplier.Text = "Supplier";
-            this.tabPageSupplier.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -242,35 +188,6 @@
             this.lstSuppliers.Name = "lstSuppliers";
             this.lstSuppliers.Size = new System.Drawing.Size(393, 186);
             this.lstSuppliers.TabIndex = 8;
-            // 
-            // btnDeleteSupplier
-            // 
-            this.btnDeleteSupplier.Enabled = false;
-            this.btnDeleteSupplier.Location = new System.Drawing.Point(287, 295);
-            this.btnDeleteSupplier.Name = "btnDeleteSupplier";
-            this.btnDeleteSupplier.Size = new System.Drawing.Size(78, 32);
-            this.btnDeleteSupplier.TabIndex = 7;
-            this.btnDeleteSupplier.Text = "Delete";
-            this.btnDeleteSupplier.UseVisualStyleBackColor = true;
-            // 
-            // btnEditSupplier
-            // 
-            this.btnEditSupplier.Enabled = false;
-            this.btnEditSupplier.Location = new System.Drawing.Point(167, 295);
-            this.btnEditSupplier.Name = "btnEditSupplier";
-            this.btnEditSupplier.Size = new System.Drawing.Size(78, 32);
-            this.btnEditSupplier.TabIndex = 6;
-            this.btnEditSupplier.Text = "Edit";
-            this.btnEditSupplier.UseVisualStyleBackColor = true;
-            // 
-            // btnAddSupplier
-            // 
-            this.btnAddSupplier.Location = new System.Drawing.Point(45, 295);
-            this.btnAddSupplier.Name = "btnAddSupplier";
-            this.btnAddSupplier.Size = new System.Drawing.Size(78, 32);
-            this.btnAddSupplier.TabIndex = 5;
-            this.btnAddSupplier.Text = "Add";
-            this.btnAddSupplier.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -445,62 +362,123 @@
             this.panelPackages.Controls.Add(this.comboBoxPackages);
             this.panelPackages.Controls.Add(this.txtPackageName);
             this.panelPackages.Controls.Add(this.label10);
-            this.panelPackages.Location = new System.Drawing.Point(812, 56);
+            this.panelPackages.Location = new System.Drawing.Point(212, 56);
             this.panelPackages.Name = "panelPackages";
             this.panelPackages.Size = new System.Drawing.Size(596, 496);
             this.panelPackages.TabIndex = 13;
             this.panelPackages.Visible = false;
             // 
-            // label2
+            // lstPkgProducts
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(883, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(303, 20);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "DO NOT DRAG AND DROP PANELS";
+            this.lstPkgProducts.FormattingEnabled = true;
+            this.lstPkgProducts.Location = new System.Drawing.Point(382, 181);
+            this.lstPkgProducts.Name = "lstPkgProducts";
+            this.lstPkgProducts.Size = new System.Drawing.Size(161, 186);
+            this.lstPkgProducts.TabIndex = 15;
             // 
-            // panelProducts
+            // label17
             // 
-            this.panelProducts.Controls.Add(this.label1);
-            this.panelProducts.Controls.Add(this.btnRefresh);
-            this.panelProducts.Controls.Add(this.lstSuppliers);
-            this.panelProducts.Controls.Add(this.btnDeleteProduct);
-            this.panelProducts.Controls.Add(this.btnEditProduct);
-            this.panelProducts.Controls.Add(this.label9);
-            this.panelProducts.Controls.Add(this.btnAddProduct);
-            this.panelProducts.Controls.Add(this.label4);
-            this.panelProducts.Controls.Add(this.btnFindProducts);
-            this.panelProducts.Controls.Add(this.label3);
-            this.panelProducts.Controls.Add(this.comboBoxProductID);
-            this.panelProducts.Controls.Add(this.txtProductName);
-            this.panelProducts.Location = new System.Drawing.Point(212, 56);
-            this.panelProducts.Name = "panelProducts";
-            this.panelProducts.Size = new System.Drawing.Size(596, 496);
-            this.panelProducts.TabIndex = 16;
-            this.panelProducts.Visible = false;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(394, 144);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(125, 13);
+            this.label17.TabIndex = 31;
+            this.label17.Text = "Products in this Package";
             // 
-            // label9
+            // label16
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(24, 29);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(202, 25);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Maintain Products";
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(47, 299);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(63, 13);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "Retail price:";
             // 
-            // label10
+            // txtPkgPrice
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(35, 29);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(285, 25);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Maintain Travel Packages";
+            this.txtPkgPrice.Enabled = false;
+            this.txtPkgPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPkgPrice.Location = new System.Drawing.Point(126, 294);
+            this.txtPkgPrice.Name = "txtPkgPrice";
+            this.txtPkgPrice.Size = new System.Drawing.Size(222, 22);
+            this.txtPkgPrice.TabIndex = 29;
+            this.txtPkgPrice.Tag = "Product Name";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(47, 332);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 13);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "Commission:";
+            // 
+            // txtCommission
+            // 
+            this.txtCommission.Enabled = false;
+            this.txtCommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCommission.Location = new System.Drawing.Point(126, 327);
+            this.txtCommission.Name = "txtCommission";
+            this.txtCommission.Size = new System.Drawing.Size(222, 22);
+            this.txtCommission.TabIndex = 27;
+            this.txtCommission.Tag = "Product Name";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(47, 257);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 13);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "Description:";
+            // 
+            // txtPkgDesc
+            // 
+            this.txtPkgDesc.Enabled = false;
+            this.txtPkgDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPkgDesc.Location = new System.Drawing.Point(126, 252);
+            this.txtPkgDesc.Name = "txtPkgDesc";
+            this.txtPkgDesc.Size = new System.Drawing.Size(222, 22);
+            this.txtPkgDesc.TabIndex = 25;
+            this.txtPkgDesc.Tag = "Product Name";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(58, 223);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 13);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "End Date:";
+            // 
+            // txtEndDate
+            // 
+            this.txtEndDate.Enabled = false;
+            this.txtEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEndDate.Location = new System.Drawing.Point(126, 218);
+            this.txtEndDate.Name = "txtEndDate";
+            this.txtEndDate.Size = new System.Drawing.Size(222, 22);
+            this.txtEndDate.TabIndex = 23;
+            this.txtEndDate.Tag = "Product Name";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(52, 186);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 13);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Start Date:";
+            // 
+            // txtStartDate
+            // 
+            this.txtStartDate.Enabled = false;
+            this.txtStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStartDate.Location = new System.Drawing.Point(126, 181);
+            this.txtStartDate.Name = "txtStartDate";
+            this.txtStartDate.Size = new System.Drawing.Size(222, 22);
+            this.txtStartDate.TabIndex = 21;
+            this.txtStartDate.Tag = "Product Name";
             // 
             // btnDeletePackage
             // 
@@ -578,127 +556,75 @@
             this.txtPackageName.TabIndex = 16;
             this.txtPackageName.Tag = "Product Name";
             // 
-            // label12
+            // label10
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(52, 186);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 13);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Start Date:";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(35, 29);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(285, 25);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Maintain Travel Packages";
             // 
-            // txtStartDate
+            // label2
             // 
-            this.txtStartDate.Enabled = false;
-            this.txtStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStartDate.Location = new System.Drawing.Point(126, 181);
-            this.txtStartDate.Name = "txtStartDate";
-            this.txtStartDate.Size = new System.Drawing.Size(222, 22);
-            this.txtStartDate.TabIndex = 21;
-            this.txtStartDate.Tag = "Product Name";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(883, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(303, 20);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "DO NOT DRAG AND DROP PANELS";
             // 
-            // label13
+            // panelProducts
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(58, 223);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(55, 13);
-            this.label13.TabIndex = 24;
-            this.label13.Text = "End Date:";
+            this.panelProducts.Controls.Add(this.label1);
+            this.panelProducts.Controls.Add(this.btnRefresh);
+            this.panelProducts.Controls.Add(this.lstSuppliers);
+            this.panelProducts.Controls.Add(this.btnDeleteProduct);
+            this.panelProducts.Controls.Add(this.btnEditProduct);
+            this.panelProducts.Controls.Add(this.label9);
+            this.panelProducts.Controls.Add(this.btnAddProduct);
+            this.panelProducts.Controls.Add(this.label4);
+            this.panelProducts.Controls.Add(this.btnFindProducts);
+            this.panelProducts.Controls.Add(this.label3);
+            this.panelProducts.Controls.Add(this.comboBoxProductID);
+            this.panelProducts.Controls.Add(this.txtProductName);
+            this.panelProducts.Location = new System.Drawing.Point(212, 56);
+            this.panelProducts.Name = "panelProducts";
+            this.panelProducts.Size = new System.Drawing.Size(596, 496);
+            this.panelProducts.TabIndex = 16;
+            this.panelProducts.Visible = false;
             // 
-            // txtEndDate
+            // label9
             // 
-            this.txtEndDate.Enabled = false;
-            this.txtEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndDate.Location = new System.Drawing.Point(126, 218);
-            this.txtEndDate.Name = "txtEndDate";
-            this.txtEndDate.Size = new System.Drawing.Size(222, 22);
-            this.txtEndDate.TabIndex = 23;
-            this.txtEndDate.Tag = "Product Name";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(24, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(202, 25);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Maintain Products";
             // 
-            // label14
+            // pnlAddProdToPkg
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(47, 257);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 13);
-            this.label14.TabIndex = 26;
-            this.label14.Text = "Description:";
-            // 
-            // txtPkgDesc
-            // 
-            this.txtPkgDesc.Enabled = false;
-            this.txtPkgDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPkgDesc.Location = new System.Drawing.Point(126, 252);
-            this.txtPkgDesc.Name = "txtPkgDesc";
-            this.txtPkgDesc.Size = new System.Drawing.Size(222, 22);
-            this.txtPkgDesc.TabIndex = 25;
-            this.txtPkgDesc.Tag = "Product Name";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(47, 332);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 13);
-            this.label15.TabIndex = 28;
-            this.label15.Text = "Commission:";
-            // 
-            // txtCommission
-            // 
-            this.txtCommission.Enabled = false;
-            this.txtCommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCommission.Location = new System.Drawing.Point(126, 327);
-            this.txtCommission.Name = "txtCommission";
-            this.txtCommission.Size = new System.Drawing.Size(222, 22);
-            this.txtCommission.TabIndex = 27;
-            this.txtCommission.Tag = "Product Name";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(47, 299);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 13);
-            this.label16.TabIndex = 30;
-            this.label16.Text = "Retail price:";
-            // 
-            // txtPkgPrice
-            // 
-            this.txtPkgPrice.Enabled = false;
-            this.txtPkgPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPkgPrice.Location = new System.Drawing.Point(126, 294);
-            this.txtPkgPrice.Name = "txtPkgPrice";
-            this.txtPkgPrice.Size = new System.Drawing.Size(222, 22);
-            this.txtPkgPrice.TabIndex = 29;
-            this.txtPkgPrice.Tag = "Product Name";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(394, 144);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(125, 13);
-            this.label17.TabIndex = 31;
-            this.label17.Text = "Products in this Package";
-            // 
-            // lstPkgProducts
-            // 
-            this.lstPkgProducts.FormattingEnabled = true;
-            this.lstPkgProducts.Location = new System.Drawing.Point(382, 181);
-            this.lstPkgProducts.Name = "lstPkgProducts";
-            this.lstPkgProducts.Size = new System.Drawing.Size(161, 186);
-            this.lstPkgProducts.TabIndex = 15;
+            this.pnlAddProdToPkg.Location = new System.Drawing.Point(837, 58);
+            this.pnlAddProdToPkg.Name = "pnlAddProdToPkg";
+            this.pnlAddProdToPkg.Size = new System.Drawing.Size(570, 490);
+            this.pnlAddProdToPkg.TabIndex = 17;
+            this.pnlAddProdToPkg.Visible = false;
             // 
             // frmProductsSuppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(1365, 784);
+            this.ClientSize = new System.Drawing.Size(1438, 784);
+            this.Controls.Add(this.pnlAddProdToPkg);
+            this.Controls.Add(this.panelPackages);
             this.Controls.Add(this.panelProducts);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panelPackages);
             this.Controls.Add(this.btnNavExit);
             this.Controls.Add(this.panelHome);
             this.Controls.Add(this.btnNavPackages);
@@ -710,13 +636,9 @@
             this.Controls.Add(this.btnNavProducts);
             this.Controls.Add(this.btnNavHome);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.tabControl1);
             this.Name = "frmProductsSuppliers";
             this.Text = "Travel Experts Database Access";
             this.Load += new System.EventHandler(this.frmProductsSuppliers_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPageProducts.ResumeLayout(false);
-            this.tabPageSupplier.ResumeLayout(false);
             this.panelHome.ResumeLayout(false);
             this.panelHome.PerformLayout();
             this.panelPackages.ResumeLayout(false);
@@ -730,9 +652,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPageSupplier;
-        private System.Windows.Forms.TabPage tabPageProducts;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.Button btnFindProducts;
@@ -742,13 +661,9 @@
         private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.Button btnEditProduct;
         private System.Windows.Forms.Button btnAddProduct;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lstSuppliers;
-        private System.Windows.Forms.Button btnDeleteSupplier;
-        private System.Windows.Forms.Button btnEditSupplier;
-        private System.Windows.Forms.Button btnAddSupplier;
         private System.Windows.Forms.Button btnNavHome;
         private System.Windows.Forms.Button btnNavProducts;
         private System.Windows.Forms.Button btnNavSupplier;
@@ -786,6 +701,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboBoxPackages;
         private System.Windows.Forms.TextBox txtPackageName;
+        private System.Windows.Forms.Panel pnlAddProdToPkg;
     }
 }
 
