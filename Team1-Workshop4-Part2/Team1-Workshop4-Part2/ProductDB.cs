@@ -160,7 +160,7 @@ namespace Team1_Workshop4_Part2
             List<Product> productcodes = new List<Product>();
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string selectStatement
-                = "SELECT ProductId FROM Products";
+                = "SELECT * FROM Products";
             SqlCommand selectCommand =
                 new SqlCommand(selectStatement, connection);
             try
@@ -171,6 +171,7 @@ namespace Team1_Workshop4_Part2
                 {
                     Product p = new Product();
                     p.ProductId = Convert.ToInt32(reader["ProductId"]);
+                    p.ProdName = Convert.ToString(reader["ProdName"]);
                     productcodes.Add(p);
                 } // end while
             }

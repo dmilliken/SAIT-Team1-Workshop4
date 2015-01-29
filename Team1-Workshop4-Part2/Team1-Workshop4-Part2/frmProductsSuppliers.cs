@@ -31,8 +31,12 @@ namespace Team1_Workshop4_Part2
             try
             {
                 allproducts = ProductDB.GetAllProducts();
-                comboBoxProductID.DataSource = allproducts;
-                comboBoxProductID.ValueMember = "ProductID";
+                //comboBoxProductID.DataSource = allproducts;
+                //comboBoxProductID.ValueMember = "ProductID";
+                cboProducts.DataSource = allproducts;
+                cboProducts.ValueMember = "ProductID";
+                cboProducts.DisplayMember = "ProdName";
+
 
             } // end try
             catch (Exception ex)
@@ -49,7 +53,7 @@ namespace Team1_Workshop4_Part2
             {
                 allpackages = PackagesDB.GetAllPackages();
                 comboBoxPackages.DataSource = allpackages;
-                comboBoxProductID.DisplayMember = "PkgName"; // this doesn't work?
+                comboBoxPackages.DisplayMember = "PkgName"; // this doesn't work?
                 comboBoxPackages.ValueMember = "PackageId"; 
             } // end try
             catch (Exception ex)
@@ -181,6 +185,7 @@ namespace Team1_Workshop4_Part2
             //DM: Show the products for the user to choose
            this.LoadProductComboBox();
            this.LoadPackagesComboBox();
+           this.LoadPackagesProductsComboBox();
         } // end method 
 
         private void GetProduct(int ProductID)
@@ -357,7 +362,22 @@ namespace Team1_Workshop4_Part2
             }//end if
         } // end method
 
-        
+        private void LoadPackagesProductsComboBox()
+        {
+            List<Product> allproducts = new List<Product>();
+            try
+            {
+                allproducts = ProductDB.GetAllProducts();
+                comboBoxProductID.DataSource = allproducts;
+                //cboProducts.DisplayMember = "ProdName";
+                comboBoxProductID.ValueMember = "ProductID";
+
+            } // end try
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
 
     } // end class
 }

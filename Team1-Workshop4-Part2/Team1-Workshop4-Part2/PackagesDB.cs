@@ -117,7 +117,7 @@ namespace Team1_Workshop4_Part2
         {
             List<Packages> packages = new List<Packages>();
             SqlConnection connection = TravelExpertsDB.GetConnection();
-            string selectStatement = "SELECT PackageId, PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, PkgAgencyCommission " +
+            string selectStatement = "SELECT PackageId,PkgName,PkgStartDate,PkgEndDate,PkgDesc,PkgBasePrice,PkgAgencyCommission " +
                                      "FROM Packages";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             

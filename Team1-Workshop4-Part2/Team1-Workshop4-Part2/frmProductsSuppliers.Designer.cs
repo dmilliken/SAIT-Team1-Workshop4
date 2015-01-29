@@ -78,9 +78,13 @@
             this.panelProducts = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlAddProdToPkg = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cboProducts = new System.Windows.Forms.ComboBox();
+            this.btnAddProdToPkg = new System.Windows.Forms.Button();
             this.panelHome.SuspendLayout();
             this.panelPackages.SuspendLayout();
             this.panelProducts.SuspendLayout();
+            this.pnlAddProdToPkg.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRefresh
@@ -544,7 +548,7 @@
             this.comboBoxPackages.Name = "comboBoxPackages";
             this.comboBoxPackages.Size = new System.Drawing.Size(155, 21);
             this.comboBoxPackages.TabIndex = 13;
-            this.comboBoxPackages.Tag = "Product ID";
+            this.comboBoxPackages.Tag = "Package ID";
             // 
             // txtPackageName
             // 
@@ -609,11 +613,41 @@
             // 
             // pnlAddProdToPkg
             // 
+            this.pnlAddProdToPkg.Controls.Add(this.btnAddProdToPkg);
+            this.pnlAddProdToPkg.Controls.Add(this.cboProducts);
+            this.pnlAddProdToPkg.Controls.Add(this.label18);
             this.pnlAddProdToPkg.Location = new System.Drawing.Point(837, 58);
             this.pnlAddProdToPkg.Name = "pnlAddProdToPkg";
             this.pnlAddProdToPkg.Size = new System.Drawing.Size(570, 490);
             this.pnlAddProdToPkg.TabIndex = 17;
-            this.pnlAddProdToPkg.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(45, 27);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(323, 25);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Add Products to this Package";
+            // 
+            // cboProducts
+            // 
+            this.cboProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProducts.FormattingEnabled = true;
+            this.cboProducts.Location = new System.Drawing.Point(80, 105);
+            this.cboProducts.Name = "cboProducts";
+            this.cboProducts.Size = new System.Drawing.Size(209, 21);
+            this.cboProducts.TabIndex = 4;
+            // 
+            // btnAddProdToPkg
+            // 
+            this.btnAddProdToPkg.Location = new System.Drawing.Point(80, 160);
+            this.btnAddProdToPkg.Name = "btnAddProdToPkg";
+            this.btnAddProdToPkg.Size = new System.Drawing.Size(209, 37);
+            this.btnAddProdToPkg.TabIndex = 19;
+            this.btnAddProdToPkg.Text = "Add to Package";
+            this.btnAddProdToPkg.UseVisualStyleBackColor = true;
             // 
             // frmProductsSuppliers
             // 
@@ -645,6 +679,8 @@
             this.panelPackages.PerformLayout();
             this.panelProducts.ResumeLayout(false);
             this.panelProducts.PerformLayout();
+            this.pnlAddProdToPkg.ResumeLayout(false);
+            this.pnlAddProdToPkg.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,6 +738,9 @@
         private System.Windows.Forms.ComboBox comboBoxPackages;
         private System.Windows.Forms.TextBox txtPackageName;
         private System.Windows.Forms.Panel pnlAddProdToPkg;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cboProducts;
+        private System.Windows.Forms.Button btnAddProdToPkg;
     }
 }
 
