@@ -78,9 +78,12 @@
             this.panelProducts = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlAddProdToPkg = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.cboProducts = new System.Windows.Forms.ComboBox();
             this.btnAddProdToPkg = new System.Windows.Forms.Button();
+            this.cboProducts = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnSavePackage = new System.Windows.Forms.Button();
+            this.dtStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
             this.panelHome.SuspendLayout();
             this.panelPackages.SuspendLayout();
             this.panelProducts.SuspendLayout();
@@ -345,6 +348,7 @@
             // 
             // panelPackages
             // 
+            this.panelPackages.Controls.Add(this.btnSavePackage);
             this.panelPackages.Controls.Add(this.lstPkgProducts);
             this.panelPackages.Controls.Add(this.label17);
             this.panelPackages.Controls.Add(this.label16);
@@ -493,6 +497,7 @@
             this.btnDeletePackage.TabIndex = 20;
             this.btnDeletePackage.Text = "Delete";
             this.btnDeletePackage.UseVisualStyleBackColor = true;
+            this.btnDeletePackage.Click += new System.EventHandler(this.btnDeletePackage_Click);
             // 
             // btnEditPackage
             // 
@@ -503,6 +508,7 @@
             this.btnEditPackage.TabIndex = 19;
             this.btnEditPackage.Text = "Edit";
             this.btnEditPackage.UseVisualStyleBackColor = true;
+            this.btnEditPackage.Click += new System.EventHandler(this.btnEditPackage_Click);
             // 
             // btnAddPackage
             // 
@@ -512,6 +518,7 @@
             this.btnAddPackage.TabIndex = 18;
             this.btnAddPackage.Text = "Add";
             this.btnAddPackage.UseVisualStyleBackColor = true;
+            this.btnAddPackage.Click += new System.EventHandler(this.btnAddPackage_Click);
             // 
             // label8
             // 
@@ -613,6 +620,8 @@
             // 
             // pnlAddProdToPkg
             // 
+            this.pnlAddProdToPkg.Controls.Add(this.dtEndDate);
+            this.pnlAddProdToPkg.Controls.Add(this.dtStartDate);
             this.pnlAddProdToPkg.Controls.Add(this.btnAddProdToPkg);
             this.pnlAddProdToPkg.Controls.Add(this.cboProducts);
             this.pnlAddProdToPkg.Controls.Add(this.label18);
@@ -620,6 +629,25 @@
             this.pnlAddProdToPkg.Name = "pnlAddProdToPkg";
             this.pnlAddProdToPkg.Size = new System.Drawing.Size(570, 490);
             this.pnlAddProdToPkg.TabIndex = 17;
+            this.pnlAddProdToPkg.Visible = false;
+            // 
+            // btnAddProdToPkg
+            // 
+            this.btnAddProdToPkg.Location = new System.Drawing.Point(80, 160);
+            this.btnAddProdToPkg.Name = "btnAddProdToPkg";
+            this.btnAddProdToPkg.Size = new System.Drawing.Size(209, 37);
+            this.btnAddProdToPkg.TabIndex = 19;
+            this.btnAddProdToPkg.Text = "Add to Package";
+            this.btnAddProdToPkg.UseVisualStyleBackColor = true;
+            // 
+            // cboProducts
+            // 
+            this.cboProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProducts.FormattingEnabled = true;
+            this.cboProducts.Location = new System.Drawing.Point(80, 105);
+            this.cboProducts.Name = "cboProducts";
+            this.cboProducts.Size = new System.Drawing.Size(209, 21);
+            this.cboProducts.TabIndex = 4;
             // 
             // label18
             // 
@@ -631,23 +659,32 @@
             this.label18.TabIndex = 3;
             this.label18.Text = "Add Products to this Package";
             // 
-            // cboProducts
+            // btnSavePackage
             // 
-            this.cboProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboProducts.FormattingEnabled = true;
-            this.cboProducts.Location = new System.Drawing.Point(80, 105);
-            this.cboProducts.Name = "cboProducts";
-            this.cboProducts.Size = new System.Drawing.Size(209, 21);
-            this.cboProducts.TabIndex = 4;
+            this.btnSavePackage.Location = new System.Drawing.Point(442, 400);
+            this.btnSavePackage.Name = "btnSavePackage";
+            this.btnSavePackage.Size = new System.Drawing.Size(100, 32);
+            this.btnSavePackage.TabIndex = 32;
+            this.btnSavePackage.Text = "Save Package";
+            this.btnSavePackage.UseVisualStyleBackColor = true;
+            this.btnSavePackage.Visible = false;
+            this.btnSavePackage.Click += new System.EventHandler(this.btnSavePackage_Click);
             // 
-            // btnAddProdToPkg
+            // dtStartDate
             // 
-            this.btnAddProdToPkg.Location = new System.Drawing.Point(80, 160);
-            this.btnAddProdToPkg.Name = "btnAddProdToPkg";
-            this.btnAddProdToPkg.Size = new System.Drawing.Size(209, 37);
-            this.btnAddProdToPkg.TabIndex = 19;
-            this.btnAddProdToPkg.Text = "Add to Package";
-            this.btnAddProdToPkg.UseVisualStyleBackColor = true;
+            this.dtStartDate.Enabled = false;
+            this.dtStartDate.Location = new System.Drawing.Point(101, 262);
+            this.dtStartDate.Name = "dtStartDate";
+            this.dtStartDate.Size = new System.Drawing.Size(200, 20);
+            this.dtStartDate.TabIndex = 20;
+            // 
+            // dtEndDate
+            // 
+            this.dtEndDate.Enabled = false;
+            this.dtEndDate.Location = new System.Drawing.Point(101, 323);
+            this.dtEndDate.Name = "dtEndDate";
+            this.dtEndDate.Size = new System.Drawing.Size(200, 20);
+            this.dtEndDate.TabIndex = 21;
             // 
             // frmProductsSuppliers
             // 
@@ -741,6 +778,9 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cboProducts;
         private System.Windows.Forms.Button btnAddProdToPkg;
+        private System.Windows.Forms.Button btnSavePackage;
+        private System.Windows.Forms.DateTimePicker dtStartDate;
+        private System.Windows.Forms.DateTimePicker dtEndDate;
     }
 }
 

@@ -23,6 +23,8 @@ namespace Team1_Workshop4_Part2
         private Supplier supplier;
         private Packages package;
 
+        public bool addPackage;
+
 
         // DM: Loads the products in the box so the user can choose
         private void LoadProductComboBox()
@@ -314,6 +316,15 @@ namespace Team1_Workshop4_Part2
             txtPkgDesc.Text = package.PkgDesc;
             txtPkgPrice.Text = package.PkgBasePrice.ToString("c");
             txtCommission.Text = package.PkgAgencyCommission.ToString("c");
+            
+            // playing with the datetime thing
+            DateTime startdate = new DateTime();
+            startdate = Convert.ToDateTime(package.PkgStartDate);
+            dtStartDate.Value = startdate;
+
+            DateTime enddate = new DateTime();
+            enddate = Convert.ToDateTime(package.PkgEndDate);
+            dtEndDate.Value = enddate;
 
             // Display the products in this package in the listbox
             int PackageId = Convert.ToInt32(comboBoxPackages.SelectedValue);
@@ -339,6 +350,16 @@ namespace Team1_Workshop4_Part2
             // clear the products listbox
             lstPkgProducts.Items.Clear();
 
+            // disable the textboxes
+            txtPackageName.Enabled = false;
+            txtPkgDesc.Enabled = false;
+            txtStartDate.Enabled = false;
+            txtEndDate.Enabled = false;
+            txtPkgPrice.Enabled = false;
+            txtCommission.Enabled = false;
+            dtStartDate.Enabled = true;
+            dtEndDate.Enabled = true;
+
             // Get the package ID
             int PackageId;
 
@@ -357,19 +378,18 @@ namespace Team1_Workshop4_Part2
                     this.DisplayPackage();
 
                 }// end else
-
-
             }//end if
         } // end method
 
         private void LoadPackagesProductsComboBox()
         {
+            // Load data into the packages products list box 
             List<Product> allproducts = new List<Product>();
             try
             {
                 allproducts = ProductDB.GetAllProducts();
                 comboBoxProductID.DataSource = allproducts;
-                //cboProducts.DisplayMember = "ProdName";
+                cboProducts.DisplayMember = "ProdName";
                 comboBoxProductID.ValueMember = "ProductID";
 
             } // end try
@@ -377,7 +397,111 @@ namespace Team1_Workshop4_Part2
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        } // end method
+
+        private void btnAddPackage_Click(object sender, EventArgs e)
+        {
+            // This is the event handler for the "Add Package" button on the packages panel
+
+            // set the value for addPackage 
+            addPackage = true;
+
+            // If the combobox has a value, set it to the null string
+            comboBoxPackages.SelectedValue = "";
+
+            // Enable and clear the textboxes
+            txtPackageName.Text = "";
+            txtPackageName.Enabled = true;
+            txtPackageName.Focus();
+
+            txtPkgDesc.Text = "";
+            txtPkgDesc.Enabled = true;
+
+            txtStartDate.Text = "";
+            txtStartDate.Enabled = true;
+
+            txtEndDate.Text = "";
+            txtEndDate.Enabled = true;
+
+            txtPkgPrice.Text = "";
+            txtPkgPrice.Enabled = true;
+
+            txtCommission.Text = "";
+            txtCommission.Enabled = true;
+
+            // Make the "Save Package" button visible
+            btnSavePackage.Visible = true;
+
+            // Make the Products panel visible
+            pnlAddProdToPkg.Visible = true;
+
+        } // end method
+
+        private void btnEditPackage_Click(object sender, EventArgs e)
+        {
+            // This is the event handler for the "Edit Package" button in the packages panel
+
+            // Set the value for addPackage
+            addPackage = false;
+
+            // Enable the textboxes
+            txtPackageName.Enabled = true;
+            txtPackageName.Focus();
+
+            txtPkgDesc.Enabled = true;
+
+            txtStartDate.Enabled = true;
+
+            txtEndDate.Enabled = true;
+
+            txtPkgPrice.Enabled = true;
+
+            txtCommission.Enabled = true;
+
+            // Make the "Save Package" button visible
+            btnSavePackage.Visible = true;
+
+            // Make the Products panel visible
+            pnlAddProdToPkg.Visible = true;
         }
+
+        private void btnDeletePackage_Click(object sender, EventArgs e)
+        {
+            // This is the event handler for deleting a package
+            // Will get to this if we have time. 
+        } // end method 
+
+        private void btnSavePackage_Click(object sender, EventArgs e)
+        {
+            // This is the event handler for the "Save Package" button.
+
+            // if addPkg == true
+            // do that stuff
+            //otherwise, edit mode
+
+            // validate the values
+            if (Validator.IsPresent(txtPackageName) && Validator.IsPresent(txtPkgDesc) &&
+                Validator.IsPresent(txtPkgPrice) && Validator.IsPositveDouble(txtPkgPrice) &&
+                Validator.IsPresent(txtCommission) &&
+                Validator.IsWithinRange(txtCommission, 0, Convert.ToDecimal(txtPkgPrice.Text)))
+            {
+                
+                if (addPackage)
+                {
+                // verify the data is legit
+                // add a new package
+                
+                } // end if for add pkg
+                else // edit the package
+                { 
+                    
+                } // end else
+ 
+            }// end validator if
+
+            
+
+        } //end method 
 
     } // end class
 }
