@@ -53,6 +53,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnNavExit = new System.Windows.Forms.Button();
             this.panelPackages = new System.Windows.Forms.Panel();
+            this.btnSavePackage = new System.Windows.Forms.Button();
             this.lstPkgProducts = new System.Windows.Forms.ListBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -78,12 +79,11 @@
             this.panelProducts = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlAddProdToPkg = new System.Windows.Forms.Panel();
+            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtStartDate = new System.Windows.Forms.DateTimePicker();
             this.btnAddProdToPkg = new System.Windows.Forms.Button();
             this.cboProducts = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.btnSavePackage = new System.Windows.Forms.Button();
-            this.dtStartDate = new System.Windows.Forms.DateTimePicker();
-            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
             this.panelHome.SuspendLayout();
             this.panelPackages.SuspendLayout();
             this.panelProducts.SuspendLayout();
@@ -348,7 +348,9 @@
             // 
             // panelPackages
             // 
+            this.panelPackages.Controls.Add(this.dtEndDate);
             this.panelPackages.Controls.Add(this.btnSavePackage);
+            this.panelPackages.Controls.Add(this.dtStartDate);
             this.panelPackages.Controls.Add(this.lstPkgProducts);
             this.panelPackages.Controls.Add(this.label17);
             this.panelPackages.Controls.Add(this.label16);
@@ -358,9 +360,7 @@
             this.panelPackages.Controls.Add(this.label14);
             this.panelPackages.Controls.Add(this.txtPkgDesc);
             this.panelPackages.Controls.Add(this.label13);
-            this.panelPackages.Controls.Add(this.txtEndDate);
             this.panelPackages.Controls.Add(this.label12);
-            this.panelPackages.Controls.Add(this.txtStartDate);
             this.panelPackages.Controls.Add(this.btnDeletePackage);
             this.panelPackages.Controls.Add(this.btnEditPackage);
             this.panelPackages.Controls.Add(this.btnAddPackage);
@@ -375,6 +375,17 @@
             this.panelPackages.Size = new System.Drawing.Size(596, 496);
             this.panelPackages.TabIndex = 13;
             this.panelPackages.Visible = false;
+            // 
+            // btnSavePackage
+            // 
+            this.btnSavePackage.Location = new System.Drawing.Point(442, 400);
+            this.btnSavePackage.Name = "btnSavePackage";
+            this.btnSavePackage.Size = new System.Drawing.Size(100, 32);
+            this.btnSavePackage.TabIndex = 32;
+            this.btnSavePackage.Text = "Save Package";
+            this.btnSavePackage.UseVisualStyleBackColor = true;
+            this.btnSavePackage.Visible = false;
+            this.btnSavePackage.Click += new System.EventHandler(this.btnSavePackage_Click);
             // 
             // lstPkgProducts
             // 
@@ -410,7 +421,7 @@
             this.txtPkgPrice.Name = "txtPkgPrice";
             this.txtPkgPrice.Size = new System.Drawing.Size(222, 22);
             this.txtPkgPrice.TabIndex = 29;
-            this.txtPkgPrice.Tag = "Product Name";
+            this.txtPkgPrice.Tag = "Package Price";
             // 
             // label15
             // 
@@ -429,7 +440,7 @@
             this.txtCommission.Name = "txtCommission";
             this.txtCommission.Size = new System.Drawing.Size(222, 22);
             this.txtCommission.TabIndex = 27;
-            this.txtCommission.Tag = "Product Name";
+            this.txtCommission.Tag = "Package Commission";
             // 
             // label14
             // 
@@ -448,7 +459,7 @@
             this.txtPkgDesc.Name = "txtPkgDesc";
             this.txtPkgDesc.Size = new System.Drawing.Size(222, 22);
             this.txtPkgDesc.TabIndex = 25;
-            this.txtPkgDesc.Tag = "Product Name";
+            this.txtPkgDesc.Tag = "Package Description";
             // 
             // label13
             // 
@@ -463,7 +474,7 @@
             // 
             this.txtEndDate.Enabled = false;
             this.txtEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndDate.Location = new System.Drawing.Point(126, 218);
+            this.txtEndDate.Location = new System.Drawing.Point(295, 421);
             this.txtEndDate.Name = "txtEndDate";
             this.txtEndDate.Size = new System.Drawing.Size(222, 22);
             this.txtEndDate.TabIndex = 23;
@@ -482,7 +493,7 @@
             // 
             this.txtStartDate.Enabled = false;
             this.txtStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStartDate.Location = new System.Drawing.Point(126, 181);
+            this.txtStartDate.Location = new System.Drawing.Point(295, 384);
             this.txtStartDate.Name = "txtStartDate";
             this.txtStartDate.Size = new System.Drawing.Size(222, 22);
             this.txtStartDate.TabIndex = 21;
@@ -565,7 +576,7 @@
             this.txtPackageName.Name = "txtPackageName";
             this.txtPackageName.Size = new System.Drawing.Size(222, 22);
             this.txtPackageName.TabIndex = 16;
-            this.txtPackageName.Tag = "Product Name";
+            this.txtPackageName.Tag = "Package Name";
             // 
             // label10
             // 
@@ -620,16 +631,41 @@
             // 
             // pnlAddProdToPkg
             // 
-            this.pnlAddProdToPkg.Controls.Add(this.dtEndDate);
-            this.pnlAddProdToPkg.Controls.Add(this.dtStartDate);
             this.pnlAddProdToPkg.Controls.Add(this.btnAddProdToPkg);
             this.pnlAddProdToPkg.Controls.Add(this.cboProducts);
             this.pnlAddProdToPkg.Controls.Add(this.label18);
+            this.pnlAddProdToPkg.Controls.Add(this.txtStartDate);
+            this.pnlAddProdToPkg.Controls.Add(this.txtEndDate);
             this.pnlAddProdToPkg.Location = new System.Drawing.Point(837, 58);
             this.pnlAddProdToPkg.Name = "pnlAddProdToPkg";
             this.pnlAddProdToPkg.Size = new System.Drawing.Size(570, 490);
             this.pnlAddProdToPkg.TabIndex = 17;
             this.pnlAddProdToPkg.Visible = false;
+            // 
+            // dtEndDate
+            // 
+            this.dtEndDate.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtEndDate.Enabled = false;
+            this.dtEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtEndDate.Location = new System.Drawing.Point(126, 216);
+            this.dtEndDate.Name = "dtEndDate";
+            this.dtEndDate.Size = new System.Drawing.Size(222, 22);
+            this.dtEndDate.TabIndex = 21;
+            this.dtEndDate.Tag = "End Date";
+            // 
+            // dtStartDate
+            // 
+            this.dtStartDate.CustomFormat = "dd/mm/yy HH:mm:ss";
+            this.dtStartDate.Enabled = false;
+            this.dtStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtStartDate.Location = new System.Drawing.Point(126, 181);
+            this.dtStartDate.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
+            this.dtStartDate.Name = "dtStartDate";
+            this.dtStartDate.Size = new System.Drawing.Size(222, 22);
+            this.dtStartDate.TabIndex = 20;
+            this.dtStartDate.Tag = "Start Date";
             // 
             // btnAddProdToPkg
             // 
@@ -658,33 +694,6 @@
             this.label18.Size = new System.Drawing.Size(323, 25);
             this.label18.TabIndex = 3;
             this.label18.Text = "Add Products to this Package";
-            // 
-            // btnSavePackage
-            // 
-            this.btnSavePackage.Location = new System.Drawing.Point(442, 400);
-            this.btnSavePackage.Name = "btnSavePackage";
-            this.btnSavePackage.Size = new System.Drawing.Size(100, 32);
-            this.btnSavePackage.TabIndex = 32;
-            this.btnSavePackage.Text = "Save Package";
-            this.btnSavePackage.UseVisualStyleBackColor = true;
-            this.btnSavePackage.Visible = false;
-            this.btnSavePackage.Click += new System.EventHandler(this.btnSavePackage_Click);
-            // 
-            // dtStartDate
-            // 
-            this.dtStartDate.Enabled = false;
-            this.dtStartDate.Location = new System.Drawing.Point(101, 262);
-            this.dtStartDate.Name = "dtStartDate";
-            this.dtStartDate.Size = new System.Drawing.Size(200, 20);
-            this.dtStartDate.TabIndex = 20;
-            // 
-            // dtEndDate
-            // 
-            this.dtEndDate.Enabled = false;
-            this.dtEndDate.Location = new System.Drawing.Point(101, 323);
-            this.dtEndDate.Name = "dtEndDate";
-            this.dtEndDate.Size = new System.Drawing.Size(200, 20);
-            this.dtEndDate.TabIndex = 21;
             // 
             // frmProductsSuppliers
             // 

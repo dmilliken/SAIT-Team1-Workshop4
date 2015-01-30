@@ -311,11 +311,11 @@ namespace Team1_Workshop4_Part2
         {
             // displays the package object data in the appropriate textboxes
             txtPackageName.Text = package.PkgName;
-            txtStartDate.Text = package.PkgStartDate.ToString();
-            txtEndDate.Text = package.PkgEndDate;
+            //txtStartDate.Text = package.PkgStartDate.ToString();
+            //txtEndDate.Text = package.PkgEndDate;
             txtPkgDesc.Text = package.PkgDesc;
-            txtPkgPrice.Text = package.PkgBasePrice.ToString("c");
-            txtCommission.Text = package.PkgAgencyCommission.ToString("c");
+            txtPkgPrice.Text = package.PkgBasePrice.ToString();
+            txtCommission.Text = package.PkgAgencyCommission.ToString();
             
             // playing with the datetime thing
             DateTime startdate = new DateTime();
@@ -353,12 +353,12 @@ namespace Team1_Workshop4_Part2
             // disable the textboxes
             txtPackageName.Enabled = false;
             txtPkgDesc.Enabled = false;
-            txtStartDate.Enabled = false;
-            txtEndDate.Enabled = false;
+            //txtStartDate.Enabled = false;
+            //txtEndDate.Enabled = false;
             txtPkgPrice.Enabled = false;
             txtCommission.Enabled = false;
-            dtStartDate.Enabled = true;
-            dtEndDate.Enabled = true;
+            dtStartDate.Enabled = false;
+            dtEndDate.Enabled = false;
 
             // Get the package ID
             int PackageId;
@@ -417,11 +417,14 @@ namespace Team1_Workshop4_Part2
             txtPkgDesc.Text = "";
             txtPkgDesc.Enabled = true;
 
-            txtStartDate.Text = "";
-            txtStartDate.Enabled = true;
+            //txtStartDate.Text = "";
+            //txtStartDate.Enabled = true;
 
-            txtEndDate.Text = "";
-            txtEndDate.Enabled = true;
+            //txtEndDate.Text = "";
+            //txtEndDate.Enabled = true;
+
+            dtStartDate.Enabled = true;
+            dtEndDate.Enabled = true;
 
             txtPkgPrice.Text = "";
             txtPkgPrice.Enabled = true;
@@ -450,9 +453,12 @@ namespace Team1_Workshop4_Part2
 
             txtPkgDesc.Enabled = true;
 
-            txtStartDate.Enabled = true;
+            //txtStartDate.Enabled = true;
 
-            txtEndDate.Enabled = true;
+            //txtEndDate.Enabled = true;
+
+            dtStartDate.Enabled = true;
+            dtEndDate.Enabled = true;
 
             txtPkgPrice.Enabled = true;
 
@@ -482,7 +488,7 @@ namespace Team1_Workshop4_Part2
             // validate the values
             if (Validator.IsPresent(txtPackageName) && Validator.IsPresent(txtPkgDesc) &&
                 Validator.IsPresent(txtPkgPrice) && Validator.IsPositveDouble(txtPkgPrice) &&
-                Validator.IsPresent(txtCommission) &&
+                Validator.IsPresent(txtCommission) && Validator.IsPositveDouble(txtCommission) &&
                 Validator.IsWithinRange(txtCommission, 0, Convert.ToDecimal(txtPkgPrice.Text)))
             {
                 
@@ -494,7 +500,41 @@ namespace Team1_Workshop4_Part2
                 } // end if for add pkg
                 else // edit the package
                 { 
-                    
+                    // make a new package object
+                    Packages newPackage = new Packages();
+                    newPackage.PackageID = package.PackageID;
+
+                    // fill the edit textfields into the new object
+                    newPackage.PkgName = txtPackageName.Text;
+                    newPackage.PkgDesc = txtPkgDesc.Text;
+                    newPackage.PkgStartDate = dtStartDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                    // newPackage.PkgStartDate = Convert.ToDateTime(dtStartDate.Value);
+                    newPackage.PkgEndDate = Convert.ToDateTime(dtEndDate.Value);
+                    newPackage.PkgBasePrice = Convert.ToDouble(txtPkgPrice.Text);
+                    newPackage.PkgAgencyCommission = Convert.ToDouble(txtCommission.Text);
+
+                    // Try to update the database
+
+                    try
+                    {
+                        // if it fails, display an error
+                        if (!PackagesDB.EditPackage(package, newPackage))
+                        {
+                            MessageBox.Show("Another user has updated or " +
+                                    "deleted that package.", "Database Error");
+                            // this.DialogResult = DialogResult.Cancel;
+                        } // end if
+                        else // updating works
+                        {
+                            package = newPackage;
+                            // this.DialogResult = DialogResult.OK;
+                        }//end else
+                    }//end try
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }//end catch
+
                 } // end else
  
             }// end validator if

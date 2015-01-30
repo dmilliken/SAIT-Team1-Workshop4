@@ -16,8 +16,10 @@ namespace Team1_Workshop4_Part2
         public string PkgName { get; set; }
 
         public string PkgStartDate { get; set; }
+        //public DateTime PkgStartDate { get; set; }
 
-        public string PkgEndDate { get; set; }
+        //public string PkgEndDate { get; set; }
+        public DateTime PkgEndDate { get; set; }
 
         public string PkgDesc { get; set; }
 
