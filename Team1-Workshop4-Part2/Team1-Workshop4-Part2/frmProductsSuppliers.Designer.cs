@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductsSuppliers));
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.btnEditProduct = new System.Windows.Forms.Button();
@@ -95,11 +96,16 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.pnlMyCustomers = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.panelHome.SuspendLayout();
             this.panelPackages.SuspendLayout();
             this.panelProducts.SuspendLayout();
             this.pnlAddProdToPkg.SuspendLayout();
             this.panelSuppliers.SuspendLayout();
+            this.pnlMyCustomers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRefresh
@@ -280,6 +286,7 @@
             this.btnNavBookings.TabIndex = 7;
             this.btnNavBookings.Text = "My Bookings";
             this.btnNavBookings.UseVisualStyleBackColor = false;
+            this.btnNavBookings.Click += new System.EventHandler(this.btnNavBookings_Click);
             // 
             // btnNavCustomers
             // 
@@ -292,6 +299,7 @@
             this.btnNavCustomers.TabIndex = 8;
             this.btnNavCustomers.Text = "My Customers";
             this.btnNavCustomers.UseVisualStyleBackColor = false;
+            this.btnNavCustomers.Click += new System.EventHandler(this.btnNavCustomers_Click);
             // 
             // btnNavAgents
             // 
@@ -827,12 +835,42 @@
             this.label21.TabIndex = 24;
             this.label21.Text = "Select a Supplier:";
             // 
+            // pnlMyCustomers
+            // 
+            this.pnlMyCustomers.Controls.Add(this.label24);
+            this.pnlMyCustomers.Controls.Add(this.pictureBox1);
+            this.pnlMyCustomers.Location = new System.Drawing.Point(227, 56);
+            this.pnlMyCustomers.Name = "pnlMyCustomers";
+            this.pnlMyCustomers.Size = new System.Drawing.Size(1180, 496);
+            this.pnlMyCustomers.TabIndex = 19;
+            this.pnlMyCustomers.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(14, 91);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(945, 116);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(48, 27);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(162, 25);
+            this.label24.TabIndex = 2;
+            this.label24.Text = "My Customers";
+            // 
             // frmProductsSuppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(1438, 784);
+            this.Controls.Add(this.pnlMyCustomers);
             this.Controls.Add(this.panelSuppliers);
             this.Controls.Add(this.pnlAddProdToPkg);
             this.Controls.Add(this.panelPackages);
@@ -862,6 +900,9 @@
             this.pnlAddProdToPkg.PerformLayout();
             this.panelSuppliers.ResumeLayout(false);
             this.panelSuppliers.PerformLayout();
+            this.pnlMyCustomers.ResumeLayout(false);
+            this.pnlMyCustomers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -936,6 +977,9 @@
         private System.Windows.Forms.Button btnAddProductToSupplier;
         private System.Windows.Forms.ComboBox cboSuppliers;
         private System.Windows.Forms.Button btnRemoveProductFromSupplier;
+        private System.Windows.Forms.Panel pnlMyCustomers;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label24;
     }
 }
 

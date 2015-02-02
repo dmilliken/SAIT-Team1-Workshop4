@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Team1_Workshop4_Part2;
+using System.IO;
 
 namespace Team1_Workshop4_Part2
 {
@@ -192,9 +193,7 @@ namespace Team1_Workshop4_Part2
         private void frmProductsSuppliers_Load(object sender, EventArgs e)
         {
             //DM: Show the products for the user to choose
-           //this.LoadProductComboBox();
-           //this.LoadPackagesComboBox();
-           //this.LoadProductComboBox(cboProducts);
+           
         } // end method 
 
         private void GetProduct(int ProductID)
@@ -732,6 +731,29 @@ namespace Team1_Workshop4_Part2
             }
 
    
+
+        }
+
+        private void btnNavBookings_Click(object sender, EventArgs e)
+        {
+            //close all other panels
+
+            // open the booking panels
+        }
+
+        private void btnNavCustomers_Click(object sender, EventArgs e)
+        {
+            // close all other panels
+            panelHome.Visible = false;
+            panelPackages.Visible = false;
+            panelSuppliers.Visible = false;
+            panelProducts.Visible = false;
+
+            // open this panel
+            pnlMyCustomers.Visible = true;
+
+            // display the query
+        
 
         } //end method 
 

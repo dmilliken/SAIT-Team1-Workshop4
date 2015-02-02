@@ -69,7 +69,7 @@ namespace Team1_Workshop4_Part2
             {
                 connection.Open();
                 //start Datareader and only read a single row
-                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                SqlDataReader reader = selectCommand.ExecuteReader();
                 //if a read was possible then proceed or else return null if no supplier exists
                 while (reader.Read())
                 {
