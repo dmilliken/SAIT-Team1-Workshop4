@@ -79,16 +79,27 @@
             this.panelProducts = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlAddProdToPkg = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cboProductSuppliers = new System.Windows.Forms.ComboBox();
             this.btnAddProdToPkg = new System.Windows.Forms.Button();
             this.cboProducts = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.cboProductSuppliers = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.panelSuppliers = new System.Windows.Forms.Panel();
+            this.cboProductsSupNav = new System.Windows.Forms.ComboBox();
+            this.btnAddProductToSupplier = new System.Windows.Forms.Button();
+            this.btnFindProductsBySupplier = new System.Windows.Forms.Button();
+            this.lstProductsBySupplier = new System.Windows.Forms.ListBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cboSuppliers = new System.Windows.Forms.ComboBox();
+            this.btnRemoveProductFromSupplier = new System.Windows.Forms.Button();
             this.panelHome.SuspendLayout();
             this.panelPackages.SuspendLayout();
             this.panelProducts.SuspendLayout();
             this.pnlAddProdToPkg.SuspendLayout();
+            this.panelSuppliers.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRefresh
@@ -656,9 +667,39 @@
             this.pnlAddProdToPkg.TabIndex = 17;
             this.pnlAddProdToPkg.Visible = false;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(62, 203);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(191, 13);
+            this.label20.TabIndex = 22;
+            this.label20.Text = "Select a Supplier of this Product";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(151, 118);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(102, 13);
+            this.label19.TabIndex = 21;
+            this.label19.Text = "Select a Product";
+            // 
+            // cboProductSuppliers
+            // 
+            this.cboProductSuppliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProductSuppliers.Enabled = false;
+            this.cboProductSuppliers.FormattingEnabled = true;
+            this.cboProductSuppliers.Location = new System.Drawing.Point(272, 195);
+            this.cboProductSuppliers.Name = "cboProductSuppliers";
+            this.cboProductSuppliers.Size = new System.Drawing.Size(209, 21);
+            this.cboProductSuppliers.TabIndex = 20;
+            // 
             // btnAddProdToPkg
             // 
-            this.btnAddProdToPkg.Location = new System.Drawing.Point(231, 258);
+            this.btnAddProdToPkg.Location = new System.Drawing.Point(272, 258);
             this.btnAddProdToPkg.Name = "btnAddProdToPkg";
             this.btnAddProdToPkg.Size = new System.Drawing.Size(209, 37);
             this.btnAddProdToPkg.TabIndex = 19;
@@ -670,7 +711,7 @@
             // 
             this.cboProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProducts.FormattingEnabled = true;
-            this.cboProducts.Location = new System.Drawing.Point(231, 115);
+            this.cboProducts.Location = new System.Drawing.Point(272, 115);
             this.cboProducts.Name = "cboProducts";
             this.cboProducts.Size = new System.Drawing.Size(209, 21);
             this.cboProducts.TabIndex = 4;
@@ -680,41 +721,113 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(45, 27);
+            this.label18.Location = new System.Drawing.Point(158, 37);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(323, 25);
             this.label18.TabIndex = 3;
             this.label18.Text = "Add Products to this Package";
             // 
-            // cboProductSuppliers
+            // panelSuppliers
             // 
-            this.cboProductSuppliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboProductSuppliers.Enabled = false;
-            this.cboProductSuppliers.FormattingEnabled = true;
-            this.cboProductSuppliers.Location = new System.Drawing.Point(231, 195);
-            this.cboProductSuppliers.Name = "cboProductSuppliers";
-            this.cboProductSuppliers.Size = new System.Drawing.Size(209, 21);
-            this.cboProductSuppliers.TabIndex = 20;
+            this.panelSuppliers.Controls.Add(this.btnRemoveProductFromSupplier);
+            this.panelSuppliers.Controls.Add(this.cboSuppliers);
+            this.panelSuppliers.Controls.Add(this.cboProductsSupNav);
+            this.panelSuppliers.Controls.Add(this.btnAddProductToSupplier);
+            this.panelSuppliers.Controls.Add(this.btnFindProductsBySupplier);
+            this.panelSuppliers.Controls.Add(this.lstProductsBySupplier);
+            this.panelSuppliers.Controls.Add(this.label23);
+            this.panelSuppliers.Controls.Add(this.label22);
+            this.panelSuppliers.Controls.Add(this.label21);
+            this.panelSuppliers.Location = new System.Drawing.Point(212, 56);
+            this.panelSuppliers.Name = "panelSuppliers";
+            this.panelSuppliers.Size = new System.Drawing.Size(596, 496);
+            this.panelSuppliers.TabIndex = 18;
+            this.panelSuppliers.Visible = false;
             // 
-            // label19
+            // cboProductsSupNav
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(110, 118);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(102, 13);
-            this.label19.TabIndex = 21;
-            this.label19.Text = "Select a Product";
+            this.cboProductsSupNav.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProductsSupNav.FormattingEnabled = true;
+            this.cboProductsSupNav.Location = new System.Drawing.Point(160, 404);
+            this.cboProductsSupNav.Name = "cboProductsSupNav";
+            this.cboProductsSupNav.Size = new System.Drawing.Size(209, 21);
+            this.cboProductsSupNav.TabIndex = 30;
             // 
-            // label20
+            // btnAddProductToSupplier
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(21, 203);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(191, 13);
-            this.label20.TabIndex = 22;
-            this.label20.Text = "Select a Supplier of this Product";
+            this.btnAddProductToSupplier.Location = new System.Drawing.Point(394, 400);
+            this.btnAddProductToSupplier.Name = "btnAddProductToSupplier";
+            this.btnAddProductToSupplier.Size = new System.Drawing.Size(96, 27);
+            this.btnAddProductToSupplier.TabIndex = 29;
+            this.btnAddProductToSupplier.Text = "Add Product";
+            this.btnAddProductToSupplier.UseVisualStyleBackColor = true;
+            this.btnAddProductToSupplier.Click += new System.EventHandler(this.btnAddProductToSupplier_Click);
+            // 
+            // btnFindProductsBySupplier
+            // 
+            this.btnFindProductsBySupplier.Location = new System.Drawing.Point(394, 104);
+            this.btnFindProductsBySupplier.Name = "btnFindProductsBySupplier";
+            this.btnFindProductsBySupplier.Size = new System.Drawing.Size(96, 27);
+            this.btnFindProductsBySupplier.TabIndex = 28;
+            this.btnFindProductsBySupplier.Text = "Find Products";
+            this.btnFindProductsBySupplier.UseVisualStyleBackColor = true;
+            this.btnFindProductsBySupplier.Click += new System.EventHandler(this.btnFindProductsBySupplier_Click);
+            // 
+            // lstProductsBySupplier
+            // 
+            this.lstProductsBySupplier.FormattingEnabled = true;
+            this.lstProductsBySupplier.Location = new System.Drawing.Point(163, 236);
+            this.lstProductsBySupplier.Name = "lstProductsBySupplier";
+            this.lstProductsBySupplier.Size = new System.Drawing.Size(208, 95);
+            this.lstProductsBySupplier.TabIndex = 27;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(169, 197);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(148, 13);
+            this.label23.TabIndex = 26;
+            this.label23.Text = "Products by this Supplier";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(38, 39);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(208, 25);
+            this.label22.TabIndex = 25;
+            this.label22.Text = "Maintain Suppliers";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(41, 111);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(108, 13);
+            this.label21.TabIndex = 24;
+            this.label21.Text = "Select a Supplier:";
+            // 
+            // cboSuppliers
+            // 
+            this.cboSuppliers.FormattingEnabled = true;
+            this.cboSuppliers.Location = new System.Drawing.Point(172, 107);
+            this.cboSuppliers.Name = "cboSuppliers";
+            this.cboSuppliers.Size = new System.Drawing.Size(200, 21);
+            this.cboSuppliers.TabIndex = 31;
+            // 
+            // btnRemoveProductFromSupplier
+            // 
+            this.btnRemoveProductFromSupplier.Location = new System.Drawing.Point(394, 250);
+            this.btnRemoveProductFromSupplier.Name = "btnRemoveProductFromSupplier";
+            this.btnRemoveProductFromSupplier.Size = new System.Drawing.Size(111, 27);
+            this.btnRemoveProductFromSupplier.TabIndex = 32;
+            this.btnRemoveProductFromSupplier.Text = "Remove Product";
+            this.btnRemoveProductFromSupplier.UseVisualStyleBackColor = true;
+            this.btnRemoveProductFromSupplier.Click += new System.EventHandler(this.btnRemoveProductFromSupplier_Click);
             // 
             // frmProductsSuppliers
             // 
@@ -722,6 +835,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(1438, 784);
+            this.Controls.Add(this.panelSuppliers);
             this.Controls.Add(this.pnlAddProdToPkg);
             this.Controls.Add(this.panelPackages);
             this.Controls.Add(this.panelProducts);
@@ -748,6 +862,8 @@
             this.panelProducts.PerformLayout();
             this.pnlAddProdToPkg.ResumeLayout(false);
             this.pnlAddProdToPkg.PerformLayout();
+            this.panelSuppliers.ResumeLayout(false);
+            this.panelSuppliers.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -812,6 +928,16 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cboProductSuppliers;
+        private System.Windows.Forms.Panel panelSuppliers;
+        private System.Windows.Forms.Button btnFindProductsBySupplier;
+        private System.Windows.Forms.ListBox lstProductsBySupplier;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox cboProductsSupNav;
+        private System.Windows.Forms.Button btnAddProductToSupplier;
+        private System.Windows.Forms.ComboBox cboSuppliers;
+        private System.Windows.Forms.Button btnRemoveProductFromSupplier;
     }
 }
 

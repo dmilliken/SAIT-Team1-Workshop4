@@ -54,7 +54,45 @@ namespace Team1_Workshop4_Part2
             }
         }
 
-        
+        public static List<Supplier> GetAllSuppliers()
+        {
+            //empty list
+            List<Supplier> allSuppliers = new List<Supplier>();
+            //Create Connection to Database
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            //Create the Sql statement to select values using the entered id
+            string selectStatement = "SELECT SupplierId, SupName FROM Suppliers";
+            //create sql command that uses the Sql statement and the connection to the database
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            //Add parameter for @supplier id and give value
+
+            try
+            {
+
+                connection.Open();
+                //start Datareader and only read a single row
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                //if a read was possible then proceed or else return null if no supplier exists
+                while (reader.Read())
+                {
+                    Supplier s = new Supplier();
+                    s.SupplierId = Convert.ToInt32(reader["SupplierId"]);
+                    s.SupName = Convert.ToString(reader["SupName"]);
+                    allSuppliers.Add(s);
+                } // end while
+                
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return allSuppliers;
+        }
+
 
         //add a new supplier 
         public static int AddSupplier(Supplier supplier)

@@ -187,7 +187,46 @@ namespace Team1_Workshop4_Part2
 
         } // end method
 
-        
+        public static Product GetProductByName(string ProdName) // return a product by name
+        { 
+            // look in the DB for a product by this name and return it's object. Select distinct to avoid duplicates.
+            // example: SELECT DISTINCT * FROM Products WHERE ProdName = 'Cruise'
+
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string selectStatement
+                = "SELECT ProductId, ProdName "
+                + "FROM Products "
+                + "WHERE ProdName = @ProdName";
+            SqlCommand selectCommand =
+                new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ProdName", ProdName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader prodReader =
+                    selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (prodReader.Read())
+                {
+                    Product product = new Product();
+                    product.ProductId = (int)prodReader["ProductId"];
+                    product.ProdName = prodReader["ProdName"].ToString();
+                    return product;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
 
     } // end class
 }

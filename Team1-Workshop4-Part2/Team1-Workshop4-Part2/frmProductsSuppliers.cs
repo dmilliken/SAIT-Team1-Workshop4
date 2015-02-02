@@ -195,9 +195,9 @@ namespace Team1_Workshop4_Part2
         private void frmProductsSuppliers_Load(object sender, EventArgs e)
         {
             //DM: Show the products for the user to choose
-           this.LoadProductComboBox();
-           this.LoadPackagesComboBox();
-           this.LoadPackagesProductsComboBox();
+           //this.LoadProductComboBox();
+           //this.LoadPackagesComboBox();
+           //this.LoadProductComboBox(cboProducts);
         } // end method 
 
         private void GetProduct(int ProductID)
@@ -219,7 +219,6 @@ namespace Team1_Workshop4_Part2
             btnEditProduct.Enabled = true;
             btnDeleteProduct.Enabled = true;
         }//end method
-
 
         private void ClearControls()
         {
@@ -263,17 +262,20 @@ namespace Team1_Workshop4_Part2
         {
             panelHome.Visible = false;
             panelProducts.Visible = false;
-            //panelProducts.Visible = false;
+            panelSuppliers.Visible = false;
             panelPackages.Visible = true;
-            //this.LoadPackagesComboBox();
-            
 
+            // load the comboboxes we need
+            this.LoadPackagesComboBox();
+            this.LoadProductComboBox(cboProducts);
         }
 
         private void btnNavHome_Click(object sender, EventArgs e)
         {
             panelPackages.Visible = false;
             panelProducts.Visible = false;
+            panelSuppliers.Visible = false;
+            pnlAddProdToPkg.Visible = false;
             panelHome.Visible = true;
 
 
@@ -289,8 +291,13 @@ namespace Team1_Workshop4_Part2
             // close every other panel
             panelPackages.Visible = false;
             panelHome.Visible = false;
+            pnlAddProdToPkg.Visible = false;
+            panelSuppliers.Visible = false;
             // view the products panel
             panelProducts.Visible = true;
+
+            // load the needed data
+            this.LoadProductComboBox(comboBoxProductID);
 
         }
 
@@ -300,6 +307,21 @@ namespace Team1_Workshop4_Part2
             panelPackages.Visible = false;
             panelProducts.Visible = false;
             panelHome.Visible = false;
+            pnlAddProdToPkg.Visible = false;
+
+            // open the panel
+            panelSuppliers.Visible = true;
+
+            // Load the suppliers combo box on the suppliers panel
+            List<Supplier> allSuppliers = new List<Supplier>();
+            allSuppliers = SupplierDB.GetAllSuppliers();
+
+            cboSuppliers.DataSource = allSuppliers;
+            cboSuppliers.ValueMember = "SupplierId";
+            cboSuppliers.DisplayMember = "SupName";
+
+            // load the product data into the combobox
+            this.LoadProductComboBox(cboProductsSupNav);
 
         }
 
@@ -393,16 +415,16 @@ namespace Team1_Workshop4_Part2
             }//end if
         } // end method
 
-        private void LoadPackagesProductsComboBox()
+        private void LoadProductComboBox(ComboBox comboBox)
         {
-            // Load data into the packages products list box 
+            // Load data into the provided product combo box. Made to be re-used multiple times.
             List<Product> allproducts = new List<Product>();
             try
             {
                 allproducts = ProductDB.GetAllProducts();
-                comboBoxProductID.DataSource = allproducts;
-                cboProducts.DisplayMember = "ProdName";
-                comboBoxProductID.ValueMember = "ProductID";
+                comboBox.DataSource = allproducts;
+                comboBox.DisplayMember = "ProdName";
+                comboBox.ValueMember = "ProductID";
                 
 
             } // end try
@@ -611,6 +633,85 @@ namespace Team1_Workshop4_Part2
             cboProductSuppliers.DataSource = productSuppliers;
             cboProductSuppliers.ValueMember = "SupplierId";
             cboProductSuppliers.DisplayMember = "SupName";
+
+        }
+
+        private void btnFindProductsBySupplier_Click(object sender, EventArgs e)
+        {
+            // Dsiplay products by the selected supplier
+            //Start by grabbing the selected supplier
+            Supplier selectedSupplier = new Supplier();
+            selectedSupplier = (Supplier)cboSuppliers.SelectedItem;
+            int selectedSupplierId = selectedSupplier.SupplierId;
+            
+            // Find and display their products
+            List<Product> productsBySelectedSupplier = new List<Product>();
+            productsBySelectedSupplier = Products_SuppliersDB.GetProductsBySupplier(selectedSupplierId);
+
+            // populate the list box 
+            foreach (Product p in productsBySelectedSupplier)
+            {
+                string item = p.ProdName;
+                lstProductsBySupplier.Items.Add(item);
+            }//end for
+        }
+
+        private void btnRemoveProductFromSupplier_Click(object sender, EventArgs e)
+        {
+            // This is the event handler for the "Remove Product" button on the supplier panel
+            Product selectedProduct = new Product();
+            string selectedProductName = (string)lstProductsBySupplier.SelectedItem;
+            selectedProduct = ProductDB.GetProductByName(selectedProductName);
+            
+            Supplier selectedSupplier = (Supplier)cboSuppliers.SelectedItem;
+
+            // remove the product from the list
+
+            lstProductsBySupplier.Items.Remove(selectedProductName);
+
+
+            // delete the correct entry in the Product_Suppliers table
+
+            // Confirm that this is what the user wants
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this product?",
+                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // If yes, try to delete
+                try
+                {
+                    if (!Products_SuppliersDB.RemoveProductFromSupplier(selectedProduct.ProductId, selectedSupplier.SupplierId))
+                    {
+                        MessageBox.Show("Another user has updated or deleted " +
+                            "that product.", "Database Error");
+                        //this.GetProduct(product.ProductId);
+                        //if (product != null)
+                        //    this.DisplayProduct();
+                        //else
+                        //    this.ClearControls();
+                    }
+                    else
+                        this.ClearControls();
+                    LoadProductComboBox();
+                } // end try
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not delete the product. " + ex.Message, ex.GetType().ToString());
+                }
+            } // end if 
+        }
+
+        private void btnAddProductToSupplier_Click(object sender, EventArgs e)
+        {
+            // This is the event handler for the 'Add product to supplier' button on the supplier panel. 
+            // It creates an entry in the Products_Suppliers Table
+
+            // Get the selected product ID and the current supplierID
+
+            // Try to create the entry
+
+            // Display a confirmation message 
 
         } //end method 
 
