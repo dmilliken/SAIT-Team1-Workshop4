@@ -708,10 +708,29 @@ namespace Team1_Workshop4_Part2
             // It creates an entry in the Products_Suppliers Table
 
             // Get the selected product ID and the current supplierID
+            Product selectedProduct = new Product();
+            selectedProduct = (Product)cboProductsSupNav.SelectedItem;
 
+            Supplier selectedSupplier = new Supplier();
+            selectedSupplier = (Supplier)cboSuppliers.SelectedItem;
             // Try to create the entry
+            try
+            {
+                // try to add the product to the database
+                Products_SuppliersDB.AddProductToSupplier(selectedProduct.ProductId, selectedSupplier.SupplierId);
 
-            // Display a confirmation message 
+                // Display a confirmation message 
+                MessageBox.Show("Product successfully added! ");
+
+                // show product in the list box
+                lstProductsBySupplier.Items.Add(selectedProduct.ProdName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong in adding the data: " + ex.Message);
+            }
+
+   
 
         } //end method 
 

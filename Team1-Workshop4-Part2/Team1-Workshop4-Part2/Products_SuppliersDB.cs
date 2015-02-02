@@ -246,7 +246,7 @@ namespace Team1_Workshop4_Part2
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string deleteStatement =
-                "DELETE FROM Product_Suppliers " +
+                "DELETE FROM Products_Suppliers " +
                 "WHERE ProductId = @ProductId " +
                 "AND SupplierId = @SupplierId";
             SqlCommand deleteCommand =
@@ -275,5 +275,43 @@ namespace Team1_Workshop4_Part2
                 connection.Close();
             } 
         }//end method
+
+        public static bool AddProductToSupplier(int ProductId, int SupplierId)
+        { 
+            //this method adds a product to a selected supplier
+
+            // example : INSERT INTO Products_Suppliers VALUES (2,1040)
+
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string insertStatement =
+                "INSERT INTO Products_Suppliers " +
+                "VALUES (@ProductId, @SupplierId)";
+            SqlCommand insertCommand =
+                new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue(
+                "@ProductId", ProductId);
+            insertCommand.Parameters.AddWithValue(
+                "@SupplierId", SupplierId);
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                //string selectStatement =
+                //    "SELECT IDENT_CURRENT('Products') FROM Products";
+                //SqlCommand selectCommand =
+                 //   new SqlCommand(selectStatement, connection);
+                //int ProductID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
     } // end class
 }
