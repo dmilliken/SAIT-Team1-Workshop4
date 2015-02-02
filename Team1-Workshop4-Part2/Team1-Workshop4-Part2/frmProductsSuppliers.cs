@@ -22,9 +22,7 @@ namespace Team1_Workshop4_Part2
         private Product product;
         private Supplier supplier;
         private Packages package;
-
         public bool addPackage;
-
 
         // DM: Loads the products in the box so the user can choose
         private void LoadProductComboBox()
@@ -33,9 +31,21 @@ namespace Team1_Workshop4_Part2
             try
             {
                 allproducts = ProductDB.GetAllProducts();
+                
+                //creating a list of products that are in the current selected package
+                int PackageId = Convert.ToInt32(comboBoxPackages.SelectedValue);
+                List<Product> packageproducts = new List<Product>();
+                packageproducts = Packages_Products_SuppliersDB.GetProductsByPackageID(PackageId);
+
+                //remnove existing products from the list of products tha the user can choose from
+
+                List<Product> selectableProducts = new List<Product>();   
+                
+
                 //comboBoxProductID.DataSource = allproducts;
                 //comboBoxProductID.ValueMember = "ProductID";
                 cboProducts.DataSource = allproducts;
+                
                 cboProducts.ValueMember = "ProductID";
                 cboProducts.DisplayMember = "ProdName";
 
@@ -111,7 +121,7 @@ namespace Team1_Workshop4_Part2
             {
                 product = addProductForm.product;
                 this.DisplayProduct();
-                LoadProductComboBox();
+                LoadProductComboBox(); 
             }//end if
             
         }// end method
@@ -307,7 +317,7 @@ namespace Team1_Workshop4_Part2
             }
         } // end method
 
-        private void DisplayPackage()
+        private List<Product> DisplayPackage()
         {
             // displays the package object data in the appropriate textboxes
             txtPackageName.Text = package.PkgName;
@@ -329,7 +339,7 @@ namespace Team1_Workshop4_Part2
             // Display the products in this package in the listbox
             int PackageId = Convert.ToInt32(comboBoxPackages.SelectedValue);
             List<Product> packageproducts = new List<Product>();
-            packageproducts = ProductDB.GetProductsByPackageID(PackageId);
+            packageproducts = Packages_Products_SuppliersDB.GetProductsByPackageID(PackageId);
             
             string line;
             foreach (Product p in packageproducts)
@@ -341,6 +351,8 @@ namespace Team1_Workshop4_Part2
             //enable the edit and delete buttons
             btnEditPackage.Enabled = true;
             btnDeletePackage.Enabled = true;
+
+            return packageproducts;
         }
 
         private void btnFindPackage_Click(object sender, EventArgs e)
@@ -391,6 +403,7 @@ namespace Team1_Workshop4_Part2
                 comboBoxProductID.DataSource = allproducts;
                 cboProducts.DisplayMember = "ProdName";
                 comboBoxProductID.ValueMember = "ProductID";
+                
 
             } // end try
             catch (Exception ex)
@@ -437,6 +450,7 @@ namespace Team1_Workshop4_Part2
 
             // Make the Products panel visible
             pnlAddProdToPkg.Visible = true;
+            
 
         } // end method
 
@@ -469,6 +483,7 @@ namespace Team1_Workshop4_Part2
 
             // Make the Products panel visible
             pnlAddProdToPkg.Visible = true;
+            
         }
 
         private void btnDeletePackage_Click(object sender, EventArgs e)
@@ -540,6 +555,62 @@ namespace Team1_Workshop4_Part2
             }// end validator if
 
             
+
+        }
+
+        private void btnAddProdToPkg_Click(object sender, EventArgs e)
+        {
+
+            // save the selected product to the package (if it doesn't already exist)
+
+            
+            int selectedproductid = Convert.ToInt32(cboProducts.SelectedValue);
+            int selectedSupplierId = Convert.ToInt32(cboProductSuppliers.SelectedValue);
+            int selectedPackageId = Convert.ToInt32(comboBoxPackages.SelectedValue);
+            Product selectedproduct = new Product();
+            Supplier selectedSupplier = new Supplier();
+            
+            try
+            {
+                // get the product and supplier obejcts and their IDs
+                selectedproduct = ProductDB.GetProduct(selectedproductid);
+                string selectedproductname = selectedproduct.ProdName;
+
+                // display in the listbox lstPkgProducts
+                lstPkgProducts.Items.Add(selectedproductname);
+
+                // get the productsupplier ID
+                int ProductSupplierId;
+                ProductSupplierId = Products_SuppliersDB.GetProductSupplierId(selectedproductid, selectedSupplierId);
+                // get the package ID
+
+                // insert into packages_products_suppliers
+                Packages_Products_SuppliersDB.AddProductToPackage(selectedPackageId, ProductSupplierId);
+            } //end try
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry, there was an error." + ex.Message, ex.GetType().ToString());
+            }//end catch
+            
+
+        }
+
+        private void cboProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Product selectedProduct = new Product();
+            selectedProduct = (Product)cboProducts.SelectedItem;
+            int productID = selectedProduct.ProductId; 
+
+            // load the list of suppliers for the selected item
+            cboProductSuppliers.Enabled = true;
+
+            List<Supplier> productSuppliers = new List<Supplier>();
+            productSuppliers = Products_SuppliersDB.GetProductSuppliers(productID);
+
+            // populate the combo box
+            cboProductSuppliers.DataSource = productSuppliers;
+            cboProductSuppliers.ValueMember = "SupplierId";
+            cboProductSuppliers.DisplayMember = "SupName";
 
         } //end method 
 

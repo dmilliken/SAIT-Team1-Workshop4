@@ -187,42 +187,7 @@ namespace Team1_Workshop4_Part2
 
         } // end method
 
-        // Darcie: Get a list of all products in a given package
-        public static List<Product> GetProductsByPackageID(int PackageId)
-        { 
-            List<Product> packageproducts = new List<Product>();
-            SqlConnection connection = TravelExpertsDB.GetConnection();
-            string selectStatement
-                = "SELECT Products_Suppliers.ProductId,ProdName " + 
-                "FROM Packages INNER JOIN Packages_Products_Suppliers ON Packages.PackageId = Packages_Products_Suppliers.PackageId " +
-	            "INNER JOIN Products_Suppliers ON Packages_Products_Suppliers.ProductSupplierId = Products_Suppliers.ProductSupplierId "+
-	            "INNER JOIN Products ON Products_Suppliers.ProductId = Products.ProductId WHERE Packages.PackageId = @PackageId";
-            SqlCommand selectCommand =
-                new SqlCommand(selectStatement, connection);
-            selectCommand.Parameters.AddWithValue("@PackageId", PackageId);
-
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = selectCommand.ExecuteReader();
-                while (reader.Read())
-                {
-                    Product p = new Product();
-                    p.ProductId = Convert.ToInt32(reader["ProductId"]);
-                    p.ProdName = Convert.ToString(reader["ProdName"]); // might be an ambiguous column name. start here when error-checking
-                    packageproducts.Add(p);
-                } // end while
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return packageproducts;
-        } // end method
+        
 
     } // end class
 }

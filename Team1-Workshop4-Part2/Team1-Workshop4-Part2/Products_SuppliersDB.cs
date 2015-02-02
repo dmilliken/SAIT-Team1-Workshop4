@@ -151,6 +151,50 @@ namespace Team1_Workshop4_Part2
             {
                 connection.Close();
             }
-        }    
-    }
+        } // end method
+
+
+        // DM: This method gets a ProductSupplierId by the selected product and supplier
+
+        public static int GetProductSupplierId(int ProductId, int SupplierId)
+        {
+            // example select statement SELECT * from Products_Suppliers WHERE SupplierId = 3600 AND ProductId = 8 returns 46
+            int ProductSupplierId = 0;
+
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string selectStatement
+                = "SELECT ProductSupplierId "
+                + "FROM Products_Suppliers "
+                + "WHERE ProductID = @ProductID AND SupplierId = @SupplierId";
+            SqlCommand selectCommand =
+                new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ProductId", ProductId);
+            selectCommand.Parameters.AddWithValue("@SupplierID", SupplierId);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader Reader =
+                    selectCommand.ExecuteReader(CommandBehavior.SequentialAccess);
+                if (Reader.Read())
+                {
+                    ProductSupplierId = (int)Reader["ProductSupplierId"];
+                }
+                return ProductSupplierId;
+            }
+
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+        }//end method
+
+    } // end class
 }
