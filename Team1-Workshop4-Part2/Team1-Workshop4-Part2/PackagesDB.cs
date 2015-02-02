@@ -211,11 +211,11 @@ namespace Team1_Workshop4_Part2
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string updateStatement =
                 "UPDATE Packages SET " +
-                "PkgName = @NewPkgName " +
-                "PkgStartDate = @NewPkgStartDate " +
-                "PkgEndDate = @NewPkgEndDate " +
-                "PkgDesc = @NewPkgDesc " +
-                "PkgBasePrice = @NewPkgBasePrice " +
+                "PkgName = @NewPkgName, " +
+                "PkgStartDate = @NewPkgStartDate, " +
+                "PkgEndDate = @NewPkgEndDate, " +
+                "PkgDesc = @NewPkgDesc, " +
+                "PkgBasePrice = @NewPkgBasePrice, " +
                 "PkgAgencyCommission = @NewPkgAgencyCommission " +
                 "WHERE PkgName = @OldPkgName " +
                 "AND PkgStartDate = @OldPkgStartDate " + 
