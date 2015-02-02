@@ -544,9 +544,10 @@ namespace Team1_Workshop4_Part2
                     // fill the edit textfields into the new object
                     newPackage.PkgName = txtPackageName.Text;
                     newPackage.PkgDesc = txtPkgDesc.Text;
-                    newPackage.PkgStartDate = dtStartDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                    newPackage.PkgStartDate = dtStartDate.Value;
+                    // newPackage.PkgStartDate = dtStartDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
                     // newPackage.PkgStartDate = Convert.ToDateTime(dtStartDate.Value);
-                    newPackage.PkgEndDate = Convert.ToDateTime(dtEndDate.Value);
+                    newPackage.PkgEndDate = dtEndDate.Value;
                     newPackage.PkgBasePrice = Convert.ToDouble(txtPkgPrice.Text);
                     newPackage.PkgAgencyCommission = Convert.ToDouble(txtCommission.Text);
 
@@ -563,7 +564,10 @@ namespace Team1_Workshop4_Part2
                         } // end if
                         else // updating works
                         {
+                            // create the new package
                             package = newPackage;
+                            // display a success message to the user
+                            MessageBox.Show("Package updated! ");
                             // this.DialogResult = DialogResult.OK;
                         }//end else
                     }//end try

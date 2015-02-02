@@ -86,6 +86,8 @@
             this.cboProducts = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.panelSuppliers = new System.Windows.Forms.Panel();
+            this.btnRemoveProductFromSupplier = new System.Windows.Forms.Button();
+            this.cboSuppliers = new System.Windows.Forms.ComboBox();
             this.cboProductsSupNav = new System.Windows.Forms.ComboBox();
             this.btnAddProductToSupplier = new System.Windows.Forms.Button();
             this.btnFindProductsBySupplier = new System.Windows.Forms.Button();
@@ -93,8 +95,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.cboSuppliers = new System.Windows.Forms.ComboBox();
-            this.btnRemoveProductFromSupplier = new System.Windows.Forms.Button();
             this.panelHome.SuspendLayout();
             this.panelPackages.SuspendLayout();
             this.panelProducts.SuspendLayout();
@@ -393,7 +393,6 @@
             this.dtEndDate.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dtEndDate.Enabled = false;
             this.dtEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtEndDate.Location = new System.Drawing.Point(126, 216);
             this.dtEndDate.Name = "dtEndDate";
             this.dtEndDate.Size = new System.Drawing.Size(222, 22);
@@ -416,7 +415,6 @@
             this.dtStartDate.CustomFormat = "dd/mm/yy HH:mm:ss";
             this.dtStartDate.Enabled = false;
             this.dtStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtStartDate.Location = new System.Drawing.Point(126, 181);
             this.dtStartDate.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
             this.dtStartDate.Name = "dtStartDate";
@@ -744,6 +742,24 @@
             this.panelSuppliers.TabIndex = 18;
             this.panelSuppliers.Visible = false;
             // 
+            // btnRemoveProductFromSupplier
+            // 
+            this.btnRemoveProductFromSupplier.Location = new System.Drawing.Point(394, 250);
+            this.btnRemoveProductFromSupplier.Name = "btnRemoveProductFromSupplier";
+            this.btnRemoveProductFromSupplier.Size = new System.Drawing.Size(111, 27);
+            this.btnRemoveProductFromSupplier.TabIndex = 32;
+            this.btnRemoveProductFromSupplier.Text = "Remove Product";
+            this.btnRemoveProductFromSupplier.UseVisualStyleBackColor = true;
+            this.btnRemoveProductFromSupplier.Click += new System.EventHandler(this.btnRemoveProductFromSupplier_Click);
+            // 
+            // cboSuppliers
+            // 
+            this.cboSuppliers.FormattingEnabled = true;
+            this.cboSuppliers.Location = new System.Drawing.Point(172, 107);
+            this.cboSuppliers.Name = "cboSuppliers";
+            this.cboSuppliers.Size = new System.Drawing.Size(200, 21);
+            this.cboSuppliers.TabIndex = 31;
+            // 
             // cboProductsSupNav
             // 
             this.cboProductsSupNav.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -810,24 +826,6 @@
             this.label21.Size = new System.Drawing.Size(108, 13);
             this.label21.TabIndex = 24;
             this.label21.Text = "Select a Supplier:";
-            // 
-            // cboSuppliers
-            // 
-            this.cboSuppliers.FormattingEnabled = true;
-            this.cboSuppliers.Location = new System.Drawing.Point(172, 107);
-            this.cboSuppliers.Name = "cboSuppliers";
-            this.cboSuppliers.Size = new System.Drawing.Size(200, 21);
-            this.cboSuppliers.TabIndex = 31;
-            // 
-            // btnRemoveProductFromSupplier
-            // 
-            this.btnRemoveProductFromSupplier.Location = new System.Drawing.Point(394, 250);
-            this.btnRemoveProductFromSupplier.Name = "btnRemoveProductFromSupplier";
-            this.btnRemoveProductFromSupplier.Size = new System.Drawing.Size(111, 27);
-            this.btnRemoveProductFromSupplier.TabIndex = 32;
-            this.btnRemoveProductFromSupplier.Text = "Remove Product";
-            this.btnRemoveProductFromSupplier.UseVisualStyleBackColor = true;
-            this.btnRemoveProductFromSupplier.Click += new System.EventHandler(this.btnRemoveProductFromSupplier_Click);
             // 
             // frmProductsSuppliers
             // 

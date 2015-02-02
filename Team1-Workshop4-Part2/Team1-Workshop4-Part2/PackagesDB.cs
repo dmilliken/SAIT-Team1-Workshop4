@@ -37,7 +37,7 @@ namespace Team1_Workshop4_Part2
                     package.PackageID = (int)Reader["PackageId"];
                     package.PkgName = Reader["PkgName"].ToString();
                     //package.PkgStartDate = Convert.ToDateTime(Reader["PkgStartDate"]); //could not convert to Datetime?
-                    package.PkgStartDate = Reader["PkgStartDate"].ToString(); //could not convert to Datetime?
+                    package.PkgStartDate = Convert.ToDateTime(Reader["PkgStartDate"]); //could not convert to Datetime?
                     package.PkgEndDate = Convert.ToDateTime(Reader["PkgEndDate"]);
                     package.PkgDesc = Reader["PkgDesc"].ToString();
                     package.PkgBasePrice = Convert.ToDouble(Reader["PkgBasePrice"]);
@@ -137,7 +137,7 @@ namespace Team1_Workshop4_Part2
                     p.PackageID = Convert.ToInt32(reader["PackageId"]);
                     p.PkgName = reader["PkgName"].ToString();
                     // p.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]);
-                    p.PkgStartDate = reader["PkgStartDate"].ToString();
+                    p.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]);
                     p.PkgEndDate = Convert.ToDateTime(reader["PkgEndDate"]);
                     p.PkgDesc = reader["PkgDesc"].ToString();
                     p.PkgBasePrice = Convert.ToDouble(reader["PkgBasePrice"]);
