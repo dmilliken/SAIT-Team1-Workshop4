@@ -24,38 +24,35 @@ namespace Team1_Workshop4_Part2
         private Packages package;
         public bool addPackage;
 
-        // DM: Loads the products in the box so the user can choose
-        private void LoadProductComboBox()
-        { 
-            List<Product> allproducts = new List<Product>();
-            try
-            {
-                allproducts = ProductDB.GetAllProducts();
+        //// DM: Loads the products in the box so the user can choose
+        //private void LoadProductComboBox()
+        //{ 
+        //    List<Product> allproducts = new List<Product>();
+        //    try
+        //    {
+        //        allproducts = ProductDB.GetAllProducts();
                 
-                //creating a list of products that are in the current selected package
-                int PackageId = Convert.ToInt32(comboBoxPackages.SelectedValue);
-                List<Product> packageproducts = new List<Product>();
-                packageproducts = Packages_Products_SuppliersDB.GetProductsByPackageID(PackageId);
+        //        //creating a list of products that are in the current selected package
+        //        int PackageId = Convert.ToInt32(comboBoxPackages.SelectedValue);
+        //        List<Product> packageproducts = new List<Product>();
+        //        packageproducts = Packages_Products_SuppliersDB.GetProductsByPackageID(PackageId);
 
-                //remnove existing products from the list of products tha the user can choose from
+        //        //remnove existing products from the list of products tha the user can choose from
 
-                List<Product> selectableProducts = new List<Product>();   
+        //        List<Product> selectableProducts = new List<Product>();   
+
+        //        cboProducts.DataSource = allproducts;
                 
-
-                //comboBoxProductID.DataSource = allproducts;
-                //comboBoxProductID.ValueMember = "ProductID";
-                cboProducts.DataSource = allproducts;
-                
-                cboProducts.ValueMember = "ProductID";
-                cboProducts.DisplayMember = "ProdName";
+        //        cboProducts.ValueMember = "ProductID";
+        //        cboProducts.DisplayMember = "ProdName";
 
 
-            } // end try
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        } // end method
+        //    } // end try
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, ex.GetType().ToString());
+        //    }
+        //} // end method
 
         // DM: Loads the packages in the dd box so the user can choose
         private void LoadPackagesComboBox()
@@ -121,7 +118,7 @@ namespace Team1_Workshop4_Part2
             {
                 product = addProductForm.product;
                 this.DisplayProduct();
-                LoadProductComboBox(); 
+                LoadProductComboBox(cboProducts); 
             }//end if
             
         }// end method
@@ -182,7 +179,7 @@ namespace Team1_Workshop4_Part2
                     }
                     else
                         this.ClearControls();
-                        LoadProductComboBox();  
+                    LoadProductComboBox(cboProducts);  
                 } // end try
                 catch (Exception ex)
                 {
@@ -239,7 +236,7 @@ namespace Team1_Workshop4_Part2
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             // button that refreshes the combo box values
-            LoadProductComboBox();
+            LoadProductComboBox(cboProducts);
         } // end method 
 
         private void DisplaySuppliers(int productId)
@@ -268,6 +265,7 @@ namespace Team1_Workshop4_Part2
             // load the comboboxes we need
             this.LoadPackagesComboBox();
             this.LoadProductComboBox(cboProducts);
+
         }
 
         private void btnNavHome_Click(object sender, EventArgs e)
@@ -545,14 +543,12 @@ namespace Team1_Workshop4_Part2
                     newPackage.PkgName = txtPackageName.Text;
                     newPackage.PkgDesc = txtPkgDesc.Text;
                     newPackage.PkgStartDate = dtStartDate.Value;
-                    // newPackage.PkgStartDate = dtStartDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                    // newPackage.PkgStartDate = Convert.ToDateTime(dtStartDate.Value);
+
                     newPackage.PkgEndDate = dtEndDate.Value;
                     newPackage.PkgBasePrice = Convert.ToDouble(txtPkgPrice.Text);
                     newPackage.PkgAgencyCommission = Convert.ToDouble(txtCommission.Text);
 
                     // Try to update the database
-
                     try
                     {
                         // if it fails, display an error
@@ -560,7 +556,6 @@ namespace Team1_Workshop4_Part2
                         {
                             MessageBox.Show("Another user has updated or " +
                                     "deleted that package.", "Database Error");
-                            // this.DialogResult = DialogResult.Cancel;
                         } // end if
                         else // updating works
                         {
@@ -568,7 +563,6 @@ namespace Team1_Workshop4_Part2
                             package = newPackage;
                             // display a success message to the user
                             MessageBox.Show("Package updated! ");
-                            // this.DialogResult = DialogResult.OK;
                         }//end else
                     }//end try
                     catch (Exception ex)
@@ -642,7 +636,10 @@ namespace Team1_Workshop4_Part2
 
         private void btnFindProductsBySupplier_Click(object sender, EventArgs e)
         {
-            // Dsiplay products by the selected supplier
+            // Clear the products listbox from the last supplier
+            lstProductsBySupplier.Items.Clear();
+
+            // Display products by the selected supplier
             //Start by grabbing the selected supplier
             Supplier selectedSupplier = new Supplier();
             selectedSupplier = (Supplier)cboSuppliers.SelectedItem;
@@ -697,7 +694,7 @@ namespace Team1_Workshop4_Part2
                     }
                     else
                         this.ClearControls();
-                    LoadProductComboBox();
+                    LoadProductComboBox(cboProducts);
                 } // end try
                 catch (Exception ex)
                 {

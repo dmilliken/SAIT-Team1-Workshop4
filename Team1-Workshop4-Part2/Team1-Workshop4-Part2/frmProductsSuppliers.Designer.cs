@@ -390,7 +390,7 @@
             // 
             // dtEndDate
             // 
-            this.dtEndDate.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtEndDate.CustomFormat = "";
             this.dtEndDate.Enabled = false;
             this.dtEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtEndDate.Location = new System.Drawing.Point(126, 216);
@@ -412,7 +412,7 @@
             // 
             // dtStartDate
             // 
-            this.dtStartDate.CustomFormat = "dd/mm/yy HH:mm:ss";
+            this.dtStartDate.CustomFormat = "";
             this.dtStartDate.Enabled = false;
             this.dtStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtStartDate.Location = new System.Drawing.Point(126, 181);

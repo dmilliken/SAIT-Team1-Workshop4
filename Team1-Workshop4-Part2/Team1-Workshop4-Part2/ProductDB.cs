@@ -187,6 +187,45 @@ namespace Team1_Workshop4_Part2
 
         } // end method
 
+        // This method gets all products that are NOT in a given package
+        public static List<Product> GetSelectableProducts(int PackageId)
+        {
+            // get all products for the combo box 
+            List<Product> products = new List<Product>();
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string selectStatement
+                = "SELECT ProdName FROM Products EXCEPT " +
+                "(SELECT ProdName FROM Packages INNER JOIN Packages_Products_Suppliers ON Packages.PackageId = Packages_Products_Suppliers.PackageId " + 
+                "INNER JOIN Products_Suppliers ON Packages_Products_Suppliers.ProductSupplierId = Products_Suppliers.ProductSupplierId " + 
+                "INNER JOIN Products ON Products_Suppliers.ProductId = Products.ProductId WHERE Packages.PackageId = @PackageId)";
+            SqlCommand selectCommand =
+                new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@PackageId", PackageId);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    Product p = new Product();
+                    p.ProductId = Convert.ToInt32(reader["ProductId"]);
+                    p.ProdName = Convert.ToString(reader["ProdName"]);
+                    products.Add(p);
+                } // end while
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return products;
+
+        } // end method
+
+
         public static Product GetProductByName(string ProdName) // return a product by name
         { 
             // look in the DB for a product by this name and return it's object. Select distinct to avoid duplicates.

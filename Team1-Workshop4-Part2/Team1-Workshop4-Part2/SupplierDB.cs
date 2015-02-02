@@ -61,14 +61,12 @@ namespace Team1_Workshop4_Part2
             //Create Connection to Database
             SqlConnection connection = TravelExpertsDB.GetConnection();
             //Create the Sql statement to select values using the entered id
-            string selectStatement = "SELECT SupplierId, SupName FROM Suppliers";
+            string selectStatement = "SELECT * FROM Suppliers";
             //create sql command that uses the Sql statement and the connection to the database
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            //Add parameter for @supplier id and give value
 
             try
             {
-
                 connection.Open();
                 //start Datareader and only read a single row
                 SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
@@ -81,7 +79,7 @@ namespace Team1_Workshop4_Part2
                     allSuppliers.Add(s);
                 } // end while
                 
-            }
+            } //end try
             catch (SqlException ex)
             {
                 throw ex;
