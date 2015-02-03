@@ -160,5 +160,17 @@ namespace Team1_Workshop4_Part2
             }
             return true;
         }
+
+        // CJ : date validator for start date & end date sets with DateTimePicker tool
+        public static bool IsDateCorrect(DateTimePicker t1, DateTimePicker t2)
+        {
+            if (t1.Value > t2.Value)
+            {
+                MessageBox.Show(t2.Tag + " cannot be earlier than " + t1.Tag);
+                t1.Focus();
+                return false;
+            }
+            return true;
+        }
     }
 }

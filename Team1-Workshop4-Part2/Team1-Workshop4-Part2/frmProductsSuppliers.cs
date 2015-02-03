@@ -523,7 +523,8 @@ namespace Team1_Workshop4_Part2
             if (Validator.IsPresent(txtPackageName) && Validator.IsPresent(txtPkgDesc) &&
                 Validator.IsPresent(txtPkgPrice) && Validator.IsPositveDouble(txtPkgPrice) &&
                 Validator.IsPresent(txtCommission) && Validator.IsPositveDouble(txtCommission) &&
-                Validator.IsWithinRange(txtCommission, 0, Convert.ToDecimal(txtPkgPrice.Text)))
+                Validator.IsWithinRange(txtCommission, 0, Convert.ToDecimal(txtPkgPrice.Text)) &&
+                Validator.IsDateCorrect(dtStartDate, dtEndDate))
             {
                 
                 if (addPackage)
