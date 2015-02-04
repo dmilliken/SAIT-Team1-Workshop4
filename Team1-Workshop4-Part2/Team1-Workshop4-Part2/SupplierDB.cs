@@ -94,18 +94,18 @@ namespace Team1_Workshop4_Part2
 
         // DM : Problem -- The SupplierId Column does not auto increment. 
         // We can try to backup the database and change this later.
-
+        // BZ : changed to allow manual entry of ID
         //add a new supplier 
         public static int AddSupplier(Supplier supplier)
         {
             //open connevtion with database
             SqlConnection connection = TravelExpertsDB.GetConnection();
             //Create an insert statement for a new supplier for both ID and Name
-            string insertStatement = "INSERT INTO Suppliers (SupName) VALUES (@SupName)";
+            string insertStatement = "INSERT INTO Suppliers (SupplierId, SupName) VALUES (@supId, @SupName)";
             //create sql command with insert statement and connection
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             //create two parameters to add the values of supplier id and supplier name
-            //insertCommand.Parameters.AddWithValue("@supId", supplier.SupplierId);
+            insertCommand.Parameters.AddWithValue("@supId", supplier.SupplierId);
             insertCommand.Parameters.AddWithValue("@SupName", supplier.SupName);
 
             try
