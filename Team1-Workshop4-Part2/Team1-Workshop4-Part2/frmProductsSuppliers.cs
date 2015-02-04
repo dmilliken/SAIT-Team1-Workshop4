@@ -13,8 +13,17 @@ using System.IO;
 namespace Team1_Workshop4_Part2
 {
     // Darcie Milliken
+    // These are the methods and event handlers for the main form 
+    // and any panels located on the main form frmProductsSuppliers
+    // The form is designed to hide and show panels based on what the user clicks on,
+    // sort of like a website
+
     public partial class frmProductsSuppliers : Form
     {
+
+        // Empty objects and variables for the methods to use
+        // ---------------------------------------------
+        // ---------------------------------------------
         public frmProductsSuppliers()
         {
             InitializeComponent();
@@ -26,39 +35,123 @@ namespace Team1_Workshop4_Part2
         public bool addPackage;
         public bool addSupplier;
 
-        //// DM: Loads the products in the box so the user can choose
-        //private void LoadProductComboBox()
-        //{ 
-        //    List<Product> allproducts = new List<Product>();
-        //    try
-        //    {
-        //        allproducts = ProductDB.GetAllProducts();
-                
-        //        //creating a list of products that are in the current selected package
-        //        int PackageId = Convert.ToInt32(comboBoxPackages.SelectedValue);
-        //        List<Product> packageproducts = new List<Product>();
-        //        packageproducts = Packages_Products_SuppliersDB.GetProductsByPackageID(PackageId);
+        // Form Load Method
+        // ---------------------------------------------
+        // ---------------------------------------------
+        private void frmProductsSuppliers_Load(object sender, EventArgs e)
+        {
+            //On form load, open the home panel
+            panelHome.Visible = true;
+           
+        } // end method 
 
-        //        //remnove existing products from the list of products tha the user can choose from
+        // Navigation Buttons that hide and show the panels or clear the controls
+        // ---------------------------------------------
+        // ---------------------------------------------
+        private void btnNavPackages_Click(object sender, EventArgs e)
+        {
+            // Show only the requested panel
+            ShowOnlyThisPanel(panelPackages);
 
-        //        List<Product> selectableProducts = new List<Product>();   
+            // load the comboboxes we need
+            this.LoadPackagesComboBox();
+            this.LoadProductComboBox(cboProducts);
 
-        //        cboProducts.DataSource = allproducts;
-                
-        //        cboProducts.ValueMember = "ProductID";
-        //        cboProducts.DisplayMember = "ProdName";
+        }
 
+        private void btnNavHome_Click(object sender, EventArgs e)
+        {
+            // Show only the requested panel
+            ShowOnlyThisPanel(panelHome);
+            
 
-        //    } // end try
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, ex.GetType().ToString());
-        //    }
-        //} // end method
+        }
 
-        // DM: Loads the packages in the dd box so the user can choose
+        private void btnNavExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnNavProducts_Click(object sender, EventArgs e)
+        {
+            // Show only the requested panel
+            ShowOnlyThisPanel(panelProducts);
+            
+            // load the needed data
+            this.LoadProductComboBox(comboBoxProductID);
+
+        }
+
+        private void btnNavSupplier_Click(object sender, EventArgs e)
+        {
+            // Show only the requested panel
+            ShowOnlyThisPanel(panelSuppliers);
+
+            // Load the suppliers combo box on the suppliers panel
+            List<Supplier> allSuppliers = new List<Supplier>();
+            allSuppliers = SupplierDB.GetAllSuppliers();
+
+            cboSuppliers.DataSource = allSuppliers;
+            cboSuppliers.ValueMember = "SupplierId";
+            cboSuppliers.DisplayMember = "SupName";
+
+            // load the product data into the combobox
+            this.LoadProductComboBox(cboProductsSupNav);
+
+        }
+
+        private void btnNavBookings_Click(object sender, EventArgs e)
+        {
+            //close all other panels
+            
+            // open the booking panels
+        }
+
+        private void btnNavCustomers_Click(object sender, EventArgs e)
+        {
+            // close all other panels and open the customer panel
+
+            ShowOnlyThisPanel(pnlMyCustomers);
+        
+
+        } //end method 
+
+        private void ShowOnlyThisPanel(Panel PanelToOpen)
+        {
+            // close all other panels and open only the one the user clicks on
+            panelHome.Visible = false;
+            panelPackages.Visible = false;
+            panelSuppliers.Visible = false;
+            panelProducts.Visible = false;
+            pnlAddEditSupplier.Visible = false;
+            pnlAddProdToPkg.Visible = false;
+            pnlMyCustomers.Visible = false;
+            PanelToOpen.Visible = true;
+        }
+
+        private void ClearControls()
+        {
+            // this method resets the form
+            txtProductName.Text = "";
+            //txtSupplierID.Text = "";
+            //txtSupplierName.Text= "";
+            btnEditProduct.Enabled = false;
+            btnDeleteProduct.Enabled = false;
+            comboBoxProductID.Focus();
+        } // end method
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        } // end method
+
+        // Methods that fetch and load data for the form controls 
+        // ---------------------------------------------
+        // ---------------------------------------------
+
         private void LoadPackagesComboBox()
         {
+            // This method loads the packages in the dd box so the user can choose
             List<Packages> allpackages = new List<Packages>();
             try
             {
@@ -86,6 +179,48 @@ namespace Team1_Workshop4_Part2
             // load the product data into the combobox
             this.LoadProductComboBox(cboProductsSupNav);
         } // end method
+
+        private void GetProduct(int ProductID)
+        { 
+            try 
+            {
+                product = ProductDB.GetProduct(ProductID);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        } // end method
+
+        private void LoadProductComboBox(ComboBox comboBox)
+        {
+            // Load data into the provided product combo box. Made to be re-used multiple times.
+            List<Product> allproducts = new List<Product>();
+            try
+            {
+                allproducts = ProductDB.GetAllProducts();
+                comboBox.DataSource = allproducts;
+                comboBox.DisplayMember = "ProdName";
+                comboBox.ValueMember = "ProductID";
+                
+
+            } // end try
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        } // end method
+
+        // Methods for buttons on the Products Panel
+        // ---------------------------------------------
+        // ---------------------------------------------
+        private void DisplayProduct()
+        {
+            // Display the product object data in the form fields 
+            txtProductName.Text = product.ProdName;
+            btnEditProduct.Enabled = true;
+            btnDeleteProduct.Enabled = true;
+        }//end method
 
         private void btnFindProducts_Click(object sender, EventArgs e)
         {
@@ -205,48 +340,6 @@ namespace Team1_Workshop4_Part2
 
         } // end method
 
-        private void frmProductsSuppliers_Load(object sender, EventArgs e)
-        {
-            //DM: Show the products for the user to choose
-           
-        } // end method 
-
-        private void GetProduct(int ProductID)
-        { 
-            try 
-            {
-                product = ProductDB.GetProduct(ProductID);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        } // end method
-
-        private void DisplayProduct()
-        {
-            // Display the product object data in the form fields 
-            txtProductName.Text = product.ProdName;
-            btnEditProduct.Enabled = true;
-            btnDeleteProduct.Enabled = true;
-        }//end method
-
-        private void ClearControls()
-        {
-            // this method resets the form
-            txtProductName.Text = "";
-            //txtSupplierID.Text = "";
-            //txtSupplierName.Text= "";
-            btnEditProduct.Enabled = false;
-            btnDeleteProduct.Enabled = false;
-            comboBoxProductID.Focus();
-        } // end method
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        } // end method
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             // button that refreshes the combo box values
@@ -269,61 +362,13 @@ namespace Team1_Workshop4_Part2
 
         }
 
-        private void btnNavPackages_Click(object sender, EventArgs e)
-        {
-            // Show only the requested panel
-            ShowOnlyThisPanel(panelPackages);
+        // Methods for buttons on the Packages Panel
+        // ---------------------------------------------
+        // ---------------------------------------------
 
-            // load the comboboxes we need
-            this.LoadPackagesComboBox();
-            this.LoadProductComboBox(cboProducts);
-
-        }
-
-        private void btnNavHome_Click(object sender, EventArgs e)
-        {
-            // Show only the requested panel
-            ShowOnlyThisPanel(panelHome);
-            
-
-        }
-
-        private void btnNavExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void btnNavProducts_Click(object sender, EventArgs e)
-        {
-            // Show only the requested panel
-            ShowOnlyThisPanel(panelProducts);
-            
-            // load the needed data
-            this.LoadProductComboBox(comboBoxProductID);
-
-        }
-
-        private void btnNavSupplier_Click(object sender, EventArgs e)
-        {
-            // Show only the requested panel
-            ShowOnlyThisPanel(panelSuppliers);
-
-            // Load the suppliers combo box on the suppliers panel
-            List<Supplier> allSuppliers = new List<Supplier>();
-            allSuppliers = SupplierDB.GetAllSuppliers();
-
-            cboSuppliers.DataSource = allSuppliers;
-            cboSuppliers.ValueMember = "SupplierId";
-            cboSuppliers.DisplayMember = "SupName";
-
-            // load the product data into the combobox
-            this.LoadProductComboBox(cboProductsSupNav);
-
-        }
-
-        // get package info by ID in the combo box on the packages panel
         private void GetPackageByID(int PackageId)
         {
+            // get package info by ID in the combo box on the packages panel
             try
             {
                 package = PackagesDB.GetPackage(PackageId);
@@ -411,25 +456,6 @@ namespace Team1_Workshop4_Part2
             }//end if
         } // end method
 
-        private void LoadProductComboBox(ComboBox comboBox)
-        {
-            // Load data into the provided product combo box. Made to be re-used multiple times.
-            List<Product> allproducts = new List<Product>();
-            try
-            {
-                allproducts = ProductDB.GetAllProducts();
-                comboBox.DataSource = allproducts;
-                comboBox.DisplayMember = "ProdName";
-                comboBox.ValueMember = "ProductID";
-                
-
-            } // end try
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        } // end method
-
         private void btnAddPackage_Click(object sender, EventArgs e)
         {
             // This is the event handler for the "Add Package" button on the packages panel
@@ -462,6 +488,9 @@ namespace Team1_Workshop4_Part2
 
             // Make the Products panel visible
             pnlAddProdToPkg.Visible = true;
+
+            // Disable the edit button
+            btnEditPackage.Enabled = false;
             
 
         } // end method
@@ -622,6 +651,10 @@ namespace Team1_Workshop4_Part2
 
         }
 
+        // Methods for buttons on the Suppliers Panel
+        // ---------------------------------------------
+        // ---------------------------------------------
+
         private void cboProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
             Product selectedProduct = new Product();
@@ -740,35 +773,6 @@ namespace Team1_Workshop4_Part2
             }
 
         } // end method
-
-        private void btnNavBookings_Click(object sender, EventArgs e)
-        {
-            //close all other panels
-            
-            // open the booking panels
-        }
-
-        private void btnNavCustomers_Click(object sender, EventArgs e)
-        {
-            // close all other panels and open the customer panel
-
-            ShowOnlyThisPanel(pnlMyCustomers);
-        
-
-        } //end method 
-
-        private void ShowOnlyThisPanel(Panel PanelToOpen)
-        {
-            // close all other panels and open only the one the user clicks on
-            panelHome.Visible = false;
-            panelPackages.Visible = false;
-            panelSuppliers.Visible = false;
-            panelProducts.Visible = false;
-            pnlAddEditSupplier.Visible = false;
-            pnlAddProdToPkg.Visible = false;
-            pnlMyCustomers.Visible = false;
-            PanelToOpen.Visible = true;
-        }
 
         private void btnSaveSupplier_Click(object sender, EventArgs e)
         {
