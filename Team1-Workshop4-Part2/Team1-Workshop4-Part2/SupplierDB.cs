@@ -92,7 +92,7 @@ namespace Team1_Workshop4_Part2
         }
 
 
-        // DM : Problem -- The SupplierId Column does not auto increment. 
+        // Darcie : Problem -- The SupplierId Column does not auto increment. 
         // We can try to backup the database and change this later.
         // BZ : changed to allow manual entry of ID
         //add a new supplier 

@@ -10,7 +10,8 @@ namespace Team1_Workshop4_Part2
     class Packages_Products_SuppliersDB
     {
 
-        // DM: This class contains methods to deal with the Packages_Products_Suppliers table in the Travel Experts database
+        // Darcie Milliken
+        // This class contains methods to deal with the Packages_Products_Suppliers table in the Travel Experts database
         // these methods will be used for the "add product" functionality of workshop 4
 
         // Get a list of all products in a given package
