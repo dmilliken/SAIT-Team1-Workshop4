@@ -448,12 +448,6 @@ namespace Team1_Workshop4_Part2
             txtPkgDesc.Text = "";
             txtPkgDesc.Enabled = true;
 
-            //txtStartDate.Text = "";
-            //txtStartDate.Enabled = true;
-
-            //txtEndDate.Text = "";
-            //txtEndDate.Enabled = true;
-
             dtStartDate.Enabled = true;
             dtEndDate.Enabled = true;
 
@@ -514,11 +508,7 @@ namespace Team1_Workshop4_Part2
         {
             // This is the event handler for the "Save Package" button.
 
-            // if addPkg == true
-            // do that stuff
-            //otherwise, edit mode
-
-            // validate the values
+            // validate the values in the textboxes
             if (Validator.IsPresent(txtPackageName) && Validator.IsPresent(txtPkgDesc) &&
                 Validator.IsPresent(txtPkgPrice) && Validator.IsPositveDouble(txtPkgPrice) &&
                 Validator.IsPresent(txtCommission) && Validator.IsPositveDouble(txtCommission) &&
@@ -528,9 +518,29 @@ namespace Team1_Workshop4_Part2
                 
                 if (addPackage)
                 {
-                // verify the data is legit
-                // add a new package
-                
+                    Packages package = new Packages();
+                    int PackageId;
+                    // add the data from the fields to the package object
+                    package.PkgName = txtPackageName.Text;
+                    package.PkgDesc = txtPkgDesc.Text;
+                    package.PkgStartDate = dtStartDate.Value;
+                    package.PkgEndDate = dtEndDate.Value;
+                    package.PkgBasePrice = Convert.ToDouble(txtPkgPrice.Text);
+                    package.PkgAgencyCommission = Convert.ToDouble(txtCommission.Text);
+                    
+                    // try to add to the database
+                    try
+                    {
+                        PackageId = PackagesDB.AddPackage(package);
+                        MessageBox.Show("Package Successfully Added! ");
+                    }// end try
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    } // end catch
+                    // Reload the packages combo box data
+                    LoadPackagesComboBox();
+
                 } // end if for add pkg
                 else // edit the package
                 { 

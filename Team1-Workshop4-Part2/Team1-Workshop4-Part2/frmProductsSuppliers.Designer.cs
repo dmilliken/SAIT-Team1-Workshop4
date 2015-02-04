@@ -411,7 +411,7 @@
             this.dtEndDate.Location = new System.Drawing.Point(126, 216);
             this.dtEndDate.Name = "dtEndDate";
             this.dtEndDate.Size = new System.Drawing.Size(222, 22);
-            this.dtEndDate.TabIndex = 21;
+            this.dtEndDate.TabIndex = 5;
             this.dtEndDate.Tag = "End Date";
             // 
             // btnSavePackage
@@ -419,7 +419,7 @@
             this.btnSavePackage.Location = new System.Drawing.Point(442, 400);
             this.btnSavePackage.Name = "btnSavePackage";
             this.btnSavePackage.Size = new System.Drawing.Size(100, 32);
-            this.btnSavePackage.TabIndex = 32;
+            this.btnSavePackage.TabIndex = 9;
             this.btnSavePackage.Text = "Save Package";
             this.btnSavePackage.UseVisualStyleBackColor = true;
             this.btnSavePackage.Visible = false;
@@ -434,7 +434,7 @@
             this.dtStartDate.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
             this.dtStartDate.Name = "dtStartDate";
             this.dtStartDate.Size = new System.Drawing.Size(222, 22);
-            this.dtStartDate.TabIndex = 20;
+            this.dtStartDate.TabIndex = 4;
             this.dtStartDate.Tag = "Start Date";
             // 
             // lstPkgProducts
@@ -471,7 +471,7 @@
             this.txtPkgPrice.Location = new System.Drawing.Point(126, 294);
             this.txtPkgPrice.Name = "txtPkgPrice";
             this.txtPkgPrice.Size = new System.Drawing.Size(222, 22);
-            this.txtPkgPrice.TabIndex = 29;
+            this.txtPkgPrice.TabIndex = 7;
             this.txtPkgPrice.Tag = "Package Price";
             // 
             // label15
@@ -491,7 +491,7 @@
             this.txtCommission.Location = new System.Drawing.Point(126, 327);
             this.txtCommission.Name = "txtCommission";
             this.txtCommission.Size = new System.Drawing.Size(222, 22);
-            this.txtCommission.TabIndex = 27;
+            this.txtCommission.TabIndex = 8;
             this.txtCommission.Tag = "Package Commission";
             // 
             // label14
@@ -511,7 +511,7 @@
             this.txtPkgDesc.Location = new System.Drawing.Point(126, 252);
             this.txtPkgDesc.Name = "txtPkgDesc";
             this.txtPkgDesc.Size = new System.Drawing.Size(222, 22);
-            this.txtPkgDesc.TabIndex = 25;
+            this.txtPkgDesc.TabIndex = 6;
             this.txtPkgDesc.Tag = "Package Description";
             // 
             // label13
@@ -581,7 +581,7 @@
             this.btnFindPackage.Location = new System.Drawing.Point(301, 90);
             this.btnFindPackage.Name = "btnFindPackage";
             this.btnFindPackage.Size = new System.Drawing.Size(130, 23);
-            this.btnFindPackage.TabIndex = 15;
+            this.btnFindPackage.TabIndex = 2;
             this.btnFindPackage.Text = "Find Package Info";
             this.btnFindPackage.UseVisualStyleBackColor = true;
             this.btnFindPackage.Click += new System.EventHandler(this.btnFindPackage_Click);
@@ -602,7 +602,7 @@
             this.comboBoxPackages.Location = new System.Drawing.Point(126, 91);
             this.comboBoxPackages.Name = "comboBoxPackages";
             this.comboBoxPackages.Size = new System.Drawing.Size(155, 21);
-            this.comboBoxPackages.TabIndex = 13;
+            this.comboBoxPackages.TabIndex = 1;
             this.comboBoxPackages.Tag = "Package ID";
             // 
             // txtPackageName
@@ -612,7 +612,7 @@
             this.txtPackageName.Location = new System.Drawing.Point(126, 139);
             this.txtPackageName.Name = "txtPackageName";
             this.txtPackageName.Size = new System.Drawing.Size(222, 22);
-            this.txtPackageName.TabIndex = 16;
+            this.txtPackageName.TabIndex = 3;
             this.txtPackageName.Tag = "Package Name";
             // 
             // label10
@@ -938,10 +938,10 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(1438, 784);
             this.Controls.Add(this.pnlAddEditSupplier);
+            this.Controls.Add(this.panelPackages);
             this.Controls.Add(this.panelSuppliers);
             this.Controls.Add(this.pnlMyCustomers);
             this.Controls.Add(this.pnlAddProdToPkg);
-            this.Controls.Add(this.panelPackages);
             this.Controls.Add(this.panelProducts);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnNavExit);

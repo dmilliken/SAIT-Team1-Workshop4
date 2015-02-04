@@ -273,6 +273,52 @@ namespace Team1_Workshop4_Part2
             }
         } // end method 
 
+
+        // Darcie: This method adds a new package
+
+        // method for adding a new row of product
+        public static int AddPackage(Packages package)
+        {
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string insertStatement =
+                "INSERT INTO Packages " +
+                "(Pkgname,PkgStartDate,PkgEndDate,PkgDesc,PkgBasePrice,PkgAgencyCommission) " +
+                "VALUES (@PkgName,@PkgStartDate,@PkgEndDate,@PkgDesc,@PkgBasePrice,@PkgAgencyCommission)";
+            SqlCommand insertCommand =
+                new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgName", package.PkgName);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgStartDate", package.PkgStartDate);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgEndDate", package.PkgEndDate);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgDesc", package.PkgDesc);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgBasePrice", package.PkgBasePrice);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgAgencyCommission", package.PkgAgencyCommission);
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                string selectStatement =
+                    "SELECT IDENT_CURRENT('Packages') FROM Packages";
+                SqlCommand selectCommand =
+                    new SqlCommand(selectStatement, connection);
+                int PackageId = Convert.ToInt32(selectCommand.ExecuteScalar());
+                return PackageId;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
     } // end class
         
 }
