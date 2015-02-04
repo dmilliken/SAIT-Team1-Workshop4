@@ -103,7 +103,7 @@ namespace Team1_Workshop4_Part2
         private void btnNavBookings_Click(object sender, EventArgs e)
         {
             //close all other panels
-            
+            ShowOnlyThisPanel(pnlBookings);
             // open the booking panels
         }
 
@@ -126,6 +126,7 @@ namespace Team1_Workshop4_Part2
             pnlAddEditSupplier.Visible = false;
             pnlAddProdToPkg.Visible = false;
             pnlMyCustomers.Visible = false;
+            pnlBookings.Visible = false;
             PanelToOpen.Visible = true;
         }
 

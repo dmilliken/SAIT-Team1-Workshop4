@@ -76,7 +76,6 @@
             this.comboBoxPackages = new System.Windows.Forms.ComboBox();
             this.txtPackageName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelProducts = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlAddProdToPkg = new System.Windows.Forms.Panel();
@@ -102,12 +101,15 @@
             this.label24 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlAddEditSupplier = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numSupplierId = new System.Windows.Forms.NumericUpDown();
             this.btnSaveSupplier = new System.Windows.Forms.Button();
             this.txtSupplierName = new System.Windows.Forms.TextBox();
             this.lblAddEditSupplier = new System.Windows.Forms.Label();
-            this.numSupplierId = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.pnlBookings = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelPackages.SuspendLayout();
@@ -118,6 +120,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlAddEditSupplier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSupplierId)).BeginInit();
+            this.pnlBookings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRefresh
@@ -634,17 +638,6 @@
             this.label10.TabIndex = 2;
             this.label10.Text = "Maintain Travel Packages";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(883, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(303, 20);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "DO NOT DRAG AND DROP PANELS";
-            // 
             // panelProducts
             // 
             this.panelProducts.Controls.Add(this.label1);
@@ -916,6 +909,34 @@
             this.pnlAddEditSupplier.TabIndex = 20;
             this.pnlAddEditSupplier.Visible = false;
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(53, 128);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(93, 13);
+            this.label25.TabIndex = 32;
+            this.label25.Text = "Supplier Name:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(70, 91);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 13);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Supplier ID:";
+            // 
+            // numSupplierId
+            // 
+            this.numSupplierId.Location = new System.Drawing.Point(155, 88);
+            this.numSupplierId.Name = "numSupplierId";
+            this.numSupplierId.Size = new System.Drawing.Size(120, 20);
+            this.numSupplierId.TabIndex = 30;
+            this.numSupplierId.Visible = false;
+            // 
             // btnSaveSupplier
             // 
             this.btnSaveSupplier.Location = new System.Drawing.Point(82, 180);
@@ -943,33 +964,34 @@
             this.lblAddEditSupplier.TabIndex = 26;
             this.lblAddEditSupplier.Text = "Edit Supplier";
             // 
-            // numSupplierId
+            // pnlBookings
             // 
-            this.numSupplierId.Location = new System.Drawing.Point(155, 88);
-            this.numSupplierId.Name = "numSupplierId";
-            this.numSupplierId.Size = new System.Drawing.Size(120, 20);
-            this.numSupplierId.TabIndex = 30;
-            this.numSupplierId.Visible = false;
+            this.pnlBookings.Controls.Add(this.label2);
+            this.pnlBookings.Controls.Add(this.pictureBox3);
+            this.pnlBookings.Location = new System.Drawing.Point(212, 56);
+            this.pnlBookings.Name = "pnlBookings";
+            this.pnlBookings.Size = new System.Drawing.Size(596, 496);
+            this.pnlBookings.TabIndex = 21;
+            this.pnlBookings.Visible = false;
             // 
-            // label7
+            // pictureBox3
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(70, 91);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 13);
-            this.label7.TabIndex = 31;
-            this.label7.Text = "Supplier ID:";
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(29, 99);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(487, 246);
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
             // 
-            // label25
+            // label2
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(53, 128);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(93, 13);
-            this.label25.TabIndex = 32;
-            this.label25.Text = "Supplier Name:";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(63, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(271, 25);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "My Customer\'s Bookings";
             // 
             // frmProductsSuppliers
             // 
@@ -980,11 +1002,11 @@
             this.Controls.Add(this.panelSuppliers);
             this.Controls.Add(this.panelHome);
             this.Controls.Add(this.panelProducts);
+            this.Controls.Add(this.pnlBookings);
             this.Controls.Add(this.pnlAddEditSupplier);
             this.Controls.Add(this.panelPackages);
             this.Controls.Add(this.pnlMyCustomers);
             this.Controls.Add(this.pnlAddProdToPkg);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnNavExit);
             this.Controls.Add(this.btnNavPackages);
             this.Controls.Add(this.btnNavAgents);
@@ -1015,6 +1037,9 @@
             this.pnlAddEditSupplier.ResumeLayout(false);
             this.pnlAddEditSupplier.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSupplierId)).EndInit();
+            this.pnlBookings.ResumeLayout(false);
+            this.pnlBookings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1046,7 +1071,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnNavExit;
         private System.Windows.Forms.Panel panelPackages;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelProducts;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
@@ -1101,6 +1125,9 @@
         private System.Windows.Forms.NumericUpDown numSupplierId;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel pnlBookings;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 
