@@ -87,6 +87,8 @@
             this.cboProducts = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.panelSuppliers = new System.Windows.Forms.Panel();
+            this.btnEditSupplier = new System.Windows.Forms.Button();
+            this.btnAddSupplier = new System.Windows.Forms.Button();
             this.btnRemoveProductFromSupplier = new System.Windows.Forms.Button();
             this.cboSuppliers = new System.Windows.Forms.ComboBox();
             this.cboProductsSupNav = new System.Windows.Forms.ComboBox();
@@ -97,8 +99,12 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.pnlMyCustomers = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label24 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlAddEditSupplier = new System.Windows.Forms.Panel();
+            this.btnSaveSupplier = new System.Windows.Forms.Button();
+            this.txtSupplierName = new System.Windows.Forms.TextBox();
+            this.lblAddEditSupplier = new System.Windows.Forms.Label();
             this.panelHome.SuspendLayout();
             this.panelPackages.SuspendLayout();
             this.panelProducts.SuspendLayout();
@@ -106,6 +112,7 @@
             this.panelSuppliers.SuspendLayout();
             this.pnlMyCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlAddEditSupplier.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRefresh
@@ -735,6 +742,8 @@
             // 
             // panelSuppliers
             // 
+            this.panelSuppliers.Controls.Add(this.btnEditSupplier);
+            this.panelSuppliers.Controls.Add(this.btnAddSupplier);
             this.panelSuppliers.Controls.Add(this.btnRemoveProductFromSupplier);
             this.panelSuppliers.Controls.Add(this.cboSuppliers);
             this.panelSuppliers.Controls.Add(this.cboProductsSupNav);
@@ -750,9 +759,29 @@
             this.panelSuppliers.TabIndex = 18;
             this.panelSuppliers.Visible = false;
             // 
+            // btnEditSupplier
+            // 
+            this.btnEditSupplier.Location = new System.Drawing.Point(194, 138);
+            this.btnEditSupplier.Name = "btnEditSupplier";
+            this.btnEditSupplier.Size = new System.Drawing.Size(123, 27);
+            this.btnEditSupplier.TabIndex = 34;
+            this.btnEditSupplier.Text = "Edit This Supplier";
+            this.btnEditSupplier.UseVisualStyleBackColor = true;
+            this.btnEditSupplier.Click += new System.EventHandler(this.btnEditSupplier_Click);
+            // 
+            // btnAddSupplier
+            // 
+            this.btnAddSupplier.Location = new System.Drawing.Point(351, 139);
+            this.btnAddSupplier.Name = "btnAddSupplier";
+            this.btnAddSupplier.Size = new System.Drawing.Size(123, 27);
+            this.btnAddSupplier.TabIndex = 33;
+            this.btnAddSupplier.Text = "Add New Supplier";
+            this.btnAddSupplier.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
+            // 
             // btnRemoveProductFromSupplier
             // 
-            this.btnRemoveProductFromSupplier.Location = new System.Drawing.Point(394, 250);
+            this.btnRemoveProductFromSupplier.Location = new System.Drawing.Point(274, 250);
             this.btnRemoveProductFromSupplier.Name = "btnRemoveProductFromSupplier";
             this.btnRemoveProductFromSupplier.Size = new System.Drawing.Size(111, 27);
             this.btnRemoveProductFromSupplier.TabIndex = 32;
@@ -763,7 +792,7 @@
             // cboSuppliers
             // 
             this.cboSuppliers.FormattingEnabled = true;
-            this.cboSuppliers.Location = new System.Drawing.Point(172, 107);
+            this.cboSuppliers.Location = new System.Drawing.Point(162, 95);
             this.cboSuppliers.Name = "cboSuppliers";
             this.cboSuppliers.Size = new System.Drawing.Size(200, 21);
             this.cboSuppliers.TabIndex = 31;
@@ -772,14 +801,14 @@
             // 
             this.cboProductsSupNav.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProductsSupNav.FormattingEnabled = true;
-            this.cboProductsSupNav.Location = new System.Drawing.Point(160, 404);
+            this.cboProductsSupNav.Location = new System.Drawing.Point(40, 404);
             this.cboProductsSupNav.Name = "cboProductsSupNav";
             this.cboProductsSupNav.Size = new System.Drawing.Size(209, 21);
             this.cboProductsSupNav.TabIndex = 30;
             // 
             // btnAddProductToSupplier
             // 
-            this.btnAddProductToSupplier.Location = new System.Drawing.Point(394, 400);
+            this.btnAddProductToSupplier.Location = new System.Drawing.Point(274, 400);
             this.btnAddProductToSupplier.Name = "btnAddProductToSupplier";
             this.btnAddProductToSupplier.Size = new System.Drawing.Size(96, 27);
             this.btnAddProductToSupplier.TabIndex = 29;
@@ -789,9 +818,9 @@
             // 
             // btnFindProductsBySupplier
             // 
-            this.btnFindProductsBySupplier.Location = new System.Drawing.Point(394, 104);
+            this.btnFindProductsBySupplier.Location = new System.Drawing.Point(29, 141);
             this.btnFindProductsBySupplier.Name = "btnFindProductsBySupplier";
-            this.btnFindProductsBySupplier.Size = new System.Drawing.Size(96, 27);
+            this.btnFindProductsBySupplier.Size = new System.Drawing.Size(123, 27);
             this.btnFindProductsBySupplier.TabIndex = 28;
             this.btnFindProductsBySupplier.Text = "Find Products";
             this.btnFindProductsBySupplier.UseVisualStyleBackColor = true;
@@ -800,7 +829,7 @@
             // lstProductsBySupplier
             // 
             this.lstProductsBySupplier.FormattingEnabled = true;
-            this.lstProductsBySupplier.Location = new System.Drawing.Point(163, 236);
+            this.lstProductsBySupplier.Location = new System.Drawing.Point(43, 236);
             this.lstProductsBySupplier.Name = "lstProductsBySupplier";
             this.lstProductsBySupplier.Size = new System.Drawing.Size(208, 95);
             this.lstProductsBySupplier.TabIndex = 27;
@@ -809,7 +838,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(169, 197);
+            this.label23.Location = new System.Drawing.Point(49, 197);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(148, 13);
             this.label23.TabIndex = 26;
@@ -829,7 +858,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(41, 111);
+            this.label21.Location = new System.Drawing.Point(31, 99);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(108, 13);
             this.label21.TabIndex = 24;
@@ -845,15 +874,6 @@
             this.pnlMyCustomers.TabIndex = 19;
             this.pnlMyCustomers.Visible = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(14, 91);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(945, 116);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -864,14 +884,62 @@
             this.label24.TabIndex = 2;
             this.label24.Text = "My Customers";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(14, 91);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(945, 116);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pnlAddEditSupplier
+            // 
+            this.pnlAddEditSupplier.Controls.Add(this.btnSaveSupplier);
+            this.pnlAddEditSupplier.Controls.Add(this.txtSupplierName);
+            this.pnlAddEditSupplier.Controls.Add(this.lblAddEditSupplier);
+            this.pnlAddEditSupplier.Location = new System.Drawing.Point(820, 59);
+            this.pnlAddEditSupplier.Name = "pnlAddEditSupplier";
+            this.pnlAddEditSupplier.Size = new System.Drawing.Size(596, 496);
+            this.pnlAddEditSupplier.TabIndex = 20;
+            this.pnlAddEditSupplier.Visible = false;
+            // 
+            // btnSaveSupplier
+            // 
+            this.btnSaveSupplier.Location = new System.Drawing.Point(82, 180);
+            this.btnSaveSupplier.Name = "btnSaveSupplier";
+            this.btnSaveSupplier.Size = new System.Drawing.Size(96, 27);
+            this.btnSaveSupplier.TabIndex = 29;
+            this.btnSaveSupplier.Text = "Save Changes";
+            this.btnSaveSupplier.UseVisualStyleBackColor = true;
+            this.btnSaveSupplier.Click += new System.EventHandler(this.btnSaveSupplier_Click);
+            // 
+            // txtSupplierName
+            // 
+            this.txtSupplierName.Location = new System.Drawing.Point(78, 104);
+            this.txtSupplierName.Name = "txtSupplierName";
+            this.txtSupplierName.Size = new System.Drawing.Size(288, 20);
+            this.txtSupplierName.TabIndex = 27;
+            // 
+            // lblAddEditSupplier
+            // 
+            this.lblAddEditSupplier.AutoSize = true;
+            this.lblAddEditSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddEditSupplier.Location = new System.Drawing.Point(77, 36);
+            this.lblAddEditSupplier.Name = "lblAddEditSupplier";
+            this.lblAddEditSupplier.Size = new System.Drawing.Size(147, 25);
+            this.lblAddEditSupplier.TabIndex = 26;
+            this.lblAddEditSupplier.Text = "Edit Supplier";
+            // 
             // frmProductsSuppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(1438, 784);
-            this.Controls.Add(this.pnlMyCustomers);
+            this.Controls.Add(this.pnlAddEditSupplier);
             this.Controls.Add(this.panelSuppliers);
+            this.Controls.Add(this.pnlMyCustomers);
             this.Controls.Add(this.pnlAddProdToPkg);
             this.Controls.Add(this.panelPackages);
             this.Controls.Add(this.panelProducts);
@@ -903,6 +971,8 @@
             this.pnlMyCustomers.ResumeLayout(false);
             this.pnlMyCustomers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlAddEditSupplier.ResumeLayout(false);
+            this.pnlAddEditSupplier.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -980,6 +1050,12 @@
         private System.Windows.Forms.Panel pnlMyCustomers;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Panel pnlAddEditSupplier;
+        private System.Windows.Forms.Button btnSaveSupplier;
+        private System.Windows.Forms.TextBox txtSupplierName;
+        private System.Windows.Forms.Label lblAddEditSupplier;
+        private System.Windows.Forms.Button btnAddSupplier;
+        private System.Windows.Forms.Button btnEditSupplier;
     }
 }
 

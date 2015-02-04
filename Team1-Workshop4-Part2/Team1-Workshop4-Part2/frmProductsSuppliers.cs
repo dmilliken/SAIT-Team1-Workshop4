@@ -24,6 +24,7 @@ namespace Team1_Workshop4_Part2
         private Supplier supplier;
         private Packages package;
         public bool addPackage;
+        public bool addSupplier;
 
         //// DM: Loads the products in the box so the user can choose
         //private void LoadProductComboBox()
@@ -70,6 +71,20 @@ namespace Team1_Workshop4_Part2
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        } // end method
+
+        private void LoadSuppliersComboBox()
+        {
+            // Load the suppliers combo box on the suppliers panel
+            List<Supplier> allSuppliers = new List<Supplier>();
+            allSuppliers = SupplierDB.GetAllSuppliers();
+
+            cboSuppliers.DataSource = allSuppliers;
+            cboSuppliers.ValueMember = "SupplierId";
+            cboSuppliers.DisplayMember = "SupName";
+
+            // load the product data into the combobox
+            this.LoadProductComboBox(cboProductsSupNav);
         } // end method
 
         private void btnFindProducts_Click(object sender, EventArgs e)
@@ -256,10 +271,8 @@ namespace Team1_Workshop4_Part2
 
         private void btnNavPackages_Click(object sender, EventArgs e)
         {
-            panelHome.Visible = false;
-            panelProducts.Visible = false;
-            panelSuppliers.Visible = false;
-            panelPackages.Visible = true;
+            // Show only the requested panel
+            ShowOnlyThisPanel(panelPackages);
 
             // load the comboboxes we need
             this.LoadPackagesComboBox();
@@ -269,12 +282,9 @@ namespace Team1_Workshop4_Part2
 
         private void btnNavHome_Click(object sender, EventArgs e)
         {
-            panelPackages.Visible = false;
-            panelProducts.Visible = false;
-            panelSuppliers.Visible = false;
-            pnlAddProdToPkg.Visible = false;
-            panelHome.Visible = true;
-
+            // Show only the requested panel
+            ShowOnlyThisPanel(panelHome);
+            
 
         }
 
@@ -285,14 +295,9 @@ namespace Team1_Workshop4_Part2
 
         private void btnNavProducts_Click(object sender, EventArgs e)
         {
-            // close every other panel
-            panelPackages.Visible = false;
-            panelHome.Visible = false;
-            pnlAddProdToPkg.Visible = false;
-            panelSuppliers.Visible = false;
-            // view the products panel
-            panelProducts.Visible = true;
-
+            // Show only the requested panel
+            ShowOnlyThisPanel(panelProducts);
+            
             // load the needed data
             this.LoadProductComboBox(comboBoxProductID);
 
@@ -300,14 +305,8 @@ namespace Team1_Workshop4_Part2
 
         private void btnNavSupplier_Click(object sender, EventArgs e)
         {
-            // close every other panel
-            panelPackages.Visible = false;
-            panelProducts.Visible = false;
-            panelHome.Visible = false;
-            pnlAddProdToPkg.Visible = false;
-
-            // open the panel
-            panelSuppliers.Visible = true;
+            // Show only the requested panel
+            ShowOnlyThisPanel(panelSuppliers);
 
             // Load the suppliers combo box on the suppliers panel
             List<Supplier> allSuppliers = new List<Supplier>();
@@ -574,9 +573,7 @@ namespace Team1_Workshop4_Part2
  
             }// end validator if
 
-            
-
-        }
+        } // end save package method
 
         private void btnAddProdToPkg_Click(object sender, EventArgs e)
         {
@@ -655,6 +652,7 @@ namespace Team1_Workshop4_Part2
                 string item = p.ProdName;
                 lstProductsBySupplier.Items.Add(item);
             }//end for
+
         }
 
         private void btnRemoveProductFromSupplier_Click(object sender, EventArgs e)
@@ -731,32 +729,135 @@ namespace Team1_Workshop4_Part2
                 MessageBox.Show("Something went wrong in adding the data: " + ex.Message);
             }
 
-   
-
-        }
+        } // end method
 
         private void btnNavBookings_Click(object sender, EventArgs e)
         {
             //close all other panels
-
+            
             // open the booking panels
         }
 
         private void btnNavCustomers_Click(object sender, EventArgs e)
         {
-            // close all other panels
+            // close all other panels and open the customer panel
+
+            ShowOnlyThisPanel(pnlMyCustomers);
+        
+
+        } //end method 
+
+        private void ShowOnlyThisPanel(Panel PanelToOpen)
+        {
+            // close all other panels and open only the one the user clicks on
             panelHome.Visible = false;
             panelPackages.Visible = false;
             panelSuppliers.Visible = false;
             panelProducts.Visible = false;
+            pnlAddEditSupplier.Visible = false;
+            pnlAddProdToPkg.Visible = false;
+            pnlMyCustomers.Visible = false;
+            PanelToOpen.Visible = true;
+        }
 
-            // open this panel
-            pnlMyCustomers.Visible = true;
+        private void btnSaveSupplier_Click(object sender, EventArgs e)
+        {
+            // Convert the user input to uppercase and store
+            string newSupName = txtSupplierName.Text.ToUpper();
+            txtSupplierName.Text = newSupName;
 
-            // display the query
-        
+            // Check to make sure the supplier name text box is non empty 
+            // Try to add/edit the supplier name
 
-        } //end method 
+            if (Validator.IsPresent(txtSupplierName))
+            {
+
+                if (addSupplier)  // adding a new supplier
+                {
+                    // create a new supplier and insert to database
+                    supplier = new Supplier();
+                    //add name data to object
+                    supplier.SupName = txtSupplierName.Text;
+
+                    //try to create the product
+                    try
+                    {
+                        SupplierDB.AddSupplier(supplier);
+                        MessageBox.Show("Supplier Successfully Added! ");
+                    } //end try
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }// end catch
+                }//end if
+                else //editing
+                {
+
+                    //get the selected supplier id
+                    Supplier selectedSupplier = new Supplier();
+                    selectedSupplier = (Supplier)cboSuppliers.SelectedItem;
+                    
+
+                    //make a new supplier object
+                    Supplier newSupplier = new Supplier();
+                    // set the supplier data
+                    newSupplier.SupplierId = selectedSupplier.SupplierId;
+                    newSupplier.SupName = newSupName;
+                    
+                    //try to edit the supplier
+                    try
+                    {
+                        if (!SupplierDB.UpdateSupplier(selectedSupplier, newSupplier)) // if it fails
+                        {
+                            MessageBox.Show("Another user has edited that supplier. Please reload and try again");
+                        } //end if
+                        else // if it worked
+                        {
+                            selectedSupplier = newSupplier;
+                            MessageBox.Show("Supplier Successfully Edited! ");
+                            //Reload the combobox data
+                            LoadSuppliersComboBox();
+                            
+                        }//end else
+
+                    } // end try
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    } // end catch
+                }//end else
+            }//end Val if
+
+        }
+
+        private void btnAddSupplier_Click(object sender, EventArgs e)
+        {
+            addSupplier = true;
+            // Display the add/edit supplier panel
+            lblAddEditSupplier.Text = "Add a New Supplier";
+            pnlAddEditSupplier.Visible = true;
+
+            txtSupplierName.Text = "";
+            txtSupplierName.Focus();
+        }
+
+        private void btnEditSupplier_Click(object sender, EventArgs e)
+        {
+            addSupplier = false;
+            // Display the add/edit supplier panel
+            pnlAddEditSupplier.Visible = true;
+
+            // Get the current selected supplier
+            Supplier selectedSupplier = new Supplier();
+            selectedSupplier = (Supplier)cboSuppliers.SelectedItem;
+            int selectedSupplierId = selectedSupplier.SupplierId;
+
+            // Display supplier name in textbox for editing
+            txtSupplierName.Text = selectedSupplier.SupName;
+            txtSupplierName.Focus();
+
+
+        } //end method
 
     } // end class
 }

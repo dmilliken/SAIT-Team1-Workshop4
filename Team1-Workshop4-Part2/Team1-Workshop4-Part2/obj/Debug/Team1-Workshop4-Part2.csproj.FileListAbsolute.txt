@@ -164,17 +164,6 @@ C:\Users\672093\Desktop\Workshop #4\Team1-Workshop4-Part2 - New GUI\Team1-Worksh
 C:\Users\672093\Desktop\Workshop #4\Team1-Workshop4-Part2 - New GUI\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1_Workshop4_Part2.frmProductsSuppliers.resources
 C:\Users\672093\Desktop\Workshop #4\Team1-Workshop4-Part2 - New GUI\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1_Workshop4_Part2.Properties.Resources.resources
 C:\Users\672093\Desktop\Workshop #4\Team1-Workshop4-Part2 - New GUI\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.csproj.GenerateResource.Cache
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\bin\Debug\Team1-Workshop4-Part2.exe.config
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.exe
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.pdb
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\bin\Debug\TravelExperts_Data.MDF
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\bin\Debug\Team1-Workshop4-Part2.exe
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\bin\Debug\Team1-Workshop4-Part2.pdb
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1_Workshop4_Part2.frmAddModifyProduct.resources
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1_Workshop4_Part2.frmProductsSuppliers.resources
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1_Workshop4_Part2.Properties.Resources.resources
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.csproj.GenerateResource.Cache
-C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.csprojResolveAssemblyReference.cache
 C:\Users\682481\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\bin\Debug\Team1-Workshop4-Part2.exe.config
 C:\Users\682481\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.exe
 C:\Users\682481\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.pdb
@@ -186,3 +175,14 @@ C:\Users\682481\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team
 C:\Users\682481\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1_Workshop4_Part2.frmProductsSuppliers.resources
 C:\Users\682481\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1_Workshop4_Part2.Properties.Resources.resources
 C:\Users\682481\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.csproj.GenerateResource.Cache
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\bin\Debug\TravelExperts_Data.MDF
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\bin\Debug\Team1-Workshop4-Part2.exe.config
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\bin\Debug\Team1-Workshop4-Part2.exe
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\bin\Debug\Team1-Workshop4-Part2.pdb
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.csprojResolveAssemblyReference.cache
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1_Workshop4_Part2.frmAddModifyProduct.resources
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1_Workshop4_Part2.frmProductsSuppliers.resources
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1_Workshop4_Part2.Properties.Resources.resources
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.csproj.GenerateResource.Cache
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.exe
+C:\Users\672093\Documents\GitHub\SAIT-Team1-Workshop4\Team1-Workshop4-Part2\Team1-Workshop4-Part2\obj\Debug\Team1-Workshop4-Part2.pdb
