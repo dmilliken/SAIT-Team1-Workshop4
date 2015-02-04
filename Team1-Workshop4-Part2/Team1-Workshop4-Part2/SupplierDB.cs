@@ -101,11 +101,11 @@ namespace Team1_Workshop4_Part2
             //open connevtion with database
             SqlConnection connection = TravelExpertsDB.GetConnection();
             //Create an insert statement for a new supplier for both ID and Name
-            string insertStatement = "INSERT INTO Suppliers (SupplierId, SupName) VALUES (@supId, @SupName)";
+            string insertStatement = "INSERT INTO Suppliers (SupplierId, SupName) VALUES (@SupId, @SupName)";
             //create sql command with insert statement and connection
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             //create two parameters to add the values of supplier id and supplier name
-            insertCommand.Parameters.AddWithValue("@supId", supplier.SupplierId);
+            insertCommand.Parameters.AddWithValue("@SupId", supplier.SupplierId);
             insertCommand.Parameters.AddWithValue("@SupName", supplier.SupName);
 
             try
@@ -195,8 +195,56 @@ namespace Team1_Workshop4_Part2
                 connection.Close();
             }
         }
-        
-    }
+
+        // Darcie
+        public static bool SupplierIdAvailable(int SupplierID)
+        { 
+            // The supplierId column is not auto incremented and the current IDs are a mess. 
+            // The workaround is that we will be allowing the user to choose it
+            // But we need to check if the ID is in use.
+            
+            // Query the Database for the supplier object of the given ID
+            // If it returns null, we can use the supplierID and return true
+            // otherwise, return false
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string selectStatement
+                = "SELECT * "
+                + "FROM Suppliers "
+                + "WHERE SupplierID = @SupplierID";
+            SqlCommand selectCommand =
+                new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@SupplierID", SupplierID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader Reader =
+                    selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (Reader.Read())
+                {
+                    Supplier supplier = new Supplier();
+                    supplier.SupplierId = (int)Reader["SupplierId"];
+                    supplier.SupName = Convert.ToString(Reader["SupName"]);
+                    return false;
+                }
+                else // if supplier is null 
+                {
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        } //end method
+
+        } // end class
+
+    } // end namespace
         //Make a Generic Delete Command for deleting suppliers that are added and un related in database
         
 
@@ -224,5 +272,3 @@ namespace Team1_Workshop4_Part2
 
     //Brodie Code End
             
-    }
-

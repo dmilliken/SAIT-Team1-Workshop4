@@ -14,41 +14,41 @@ namespace Team1_Workshop4_Part2
     public class PackagesDB
     {
 
-        public static int AddPackages(Packages package)
-        {
-            SqlConnection connection = TravelExpertsDB.GetConnection();
-            string insertStatement = "Insert package " +
-                                     "(PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, PkgAgencyCommission) " +
-                                     "VALUES (@pkgname, @pkgstartdate, @pkgenddate, @pkgDesc, @pkgbaseprice, @pkgagencycommission)";
-            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@pkgname", package.PkgName);
-            insertCommand.Parameters.AddWithValue("@pkgstartdate", package.PkgStartDate);
-            insertCommand.Parameters.AddWithValue("@pkgenddate", package.PkgEndDate);
-            insertCommand.Parameters.AddWithValue("@pkgDesc", package.PkgDesc);
-            insertCommand.Parameters.AddWithValue("@pkgbaseprice", package.PkgBasePrice);
-            insertCommand.Parameters.AddWithValue("@pkgagencycommission", package.PkgAgencyCommission);
+        //public static int AddPackages(Packages package)
+        //{
+        //    SqlConnection connection = TravelExpertsDB.GetConnection();
+        //    string insertStatement = "Insert package " +
+        //                             "(PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, PkgAgencyCommission) " +
+        //                             "VALUES (@pkgname, @pkgstartdate, @pkgenddate, @pkgDesc, @pkgbaseprice, @pkgagencycommission)";
+        //    SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+        //    insertCommand.Parameters.AddWithValue("@pkgname", package.PkgName);
+        //    insertCommand.Parameters.AddWithValue("@pkgstartdate", package.PkgStartDate);
+        //    insertCommand.Parameters.AddWithValue("@pkgenddate", package.PkgEndDate);
+        //    insertCommand.Parameters.AddWithValue("@pkgDesc", package.PkgDesc);
+        //    insertCommand.Parameters.AddWithValue("@pkgbaseprice", package.PkgBasePrice);
+        //    insertCommand.Parameters.AddWithValue("@pkgagencycommission", package.PkgAgencyCommission);
 
-            try
-            {
-                connection.Open();
-                insertCommand.ExecuteNonQuery();
-                //based on the assumption that the packages with auto increment when created
-                string selectStatement = "SELECT IDENT_CURRENT('Packages') FROM Packages";
-                SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-                int packageId = Convert.ToInt32(selectCommand.ExecuteScalar());
-                return packageId;
+        //    try
+        //    {
+        //        connection.Open();
+        //        insertCommand.ExecuteNonQuery();
+        //        //based on the assumption that the packages with auto increment when created
+        //        string selectStatement = "SELECT IDENT_CURRENT('Packages') FROM Packages";
+        //        SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+        //        int packageId = Convert.ToInt32(selectCommand.ExecuteScalar());
+        //        return packageId;
 
 
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
+        //}
         public static Packages GetPackage(int PackageId)
         {
         //DM: this method gets package object info by package ID.
@@ -354,6 +354,7 @@ namespace Team1_Workshop4_Part2
             }
 
         }
+
     } // end class
         
 }

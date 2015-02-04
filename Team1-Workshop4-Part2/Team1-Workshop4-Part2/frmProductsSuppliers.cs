@@ -790,21 +790,38 @@ namespace Team1_Workshop4_Part2
                 {
                     // create a new supplier and insert to database
                     supplier = new Supplier();
-                    //add name data to object
-                    supplier.SupName = txtSupplierName.Text;
+                    
+                    //check to make sure the selected supplierID is not in use
+                    // if the Supplier Id is available, try to create the supplier 
+                    if (SupplierDB.SupplierIdAvailable(Convert.ToInt32(numSupplierId.Value)))
+                    {    
+                        //add name data to object
+                        supplier.SupplierId = Convert.ToInt32(numSupplierId.Value);
+                        supplier.SupName = txtSupplierName.Text;
 
-                    //try to create the product
-                    try
+                        //try to create the supplier
+                        try
+                        {
+                            SupplierDB.AddSupplier(supplier);
+                            MessageBox.Show("Supplier Successfully Added! ");
+                            //reload the supplier combo box
+                            LoadSuppliersComboBox();
+                        } //end try
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, ex.GetType().ToString());
+                        }// end catch
+
+                    } // end if
+                    else // it is not available 
                     {
-                        SupplierDB.AddSupplier(supplier);
-                        MessageBox.Show("Supplier Successfully Added! ");
-                    } //end try
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, ex.GetType().ToString());
-                    }// end catch
+                        MessageBox.Show("That Supplier ID is taken. Please choose a different one.");
+                        numSupplierId.Focus();
+                    } // end else
+
+                    
                 }//end if
-                else //editing
+                else //editing a supplier 
                 {
 
                     //get the selected supplier id
@@ -850,6 +867,7 @@ namespace Team1_Workshop4_Part2
             // Display the add/edit supplier panel
             lblAddEditSupplier.Text = "Add a New Supplier";
             pnlAddEditSupplier.Visible = true;
+            numSupplierId.Visible = true;
 
             txtSupplierName.Text = "";
             txtSupplierName.Focus();

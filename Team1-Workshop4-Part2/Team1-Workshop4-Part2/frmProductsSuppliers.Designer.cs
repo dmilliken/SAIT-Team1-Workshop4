@@ -50,6 +50,7 @@
             this.btnNavAgents = new System.Windows.Forms.Button();
             this.btnNavPackages = new System.Windows.Forms.Button();
             this.panelHome = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnNavExit = new System.Windows.Forms.Button();
             this.panelPackages = new System.Windows.Forms.Panel();
@@ -104,8 +105,11 @@
             this.btnSaveSupplier = new System.Windows.Forms.Button();
             this.txtSupplierName = new System.Windows.Forms.TextBox();
             this.lblAddEditSupplier = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.numSupplierId = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.panelHome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelPackages.SuspendLayout();
             this.panelProducts.SuspendLayout();
             this.pnlAddProdToPkg.SuspendLayout();
@@ -113,7 +117,7 @@
             this.pnlMyCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlAddEditSupplier.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSupplierId)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRefresh
@@ -343,6 +347,16 @@
             this.panelHome.Name = "panelHome";
             this.panelHome.Size = new System.Drawing.Size(596, 496);
             this.panelHome.TabIndex = 12;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(96, 99);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(409, 307);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
             // 
             // label6
             // 
@@ -890,6 +904,9 @@
             // 
             // pnlAddEditSupplier
             // 
+            this.pnlAddEditSupplier.Controls.Add(this.label25);
+            this.pnlAddEditSupplier.Controls.Add(this.label7);
+            this.pnlAddEditSupplier.Controls.Add(this.numSupplierId);
             this.pnlAddEditSupplier.Controls.Add(this.btnSaveSupplier);
             this.pnlAddEditSupplier.Controls.Add(this.txtSupplierName);
             this.pnlAddEditSupplier.Controls.Add(this.lblAddEditSupplier);
@@ -911,7 +928,7 @@
             // 
             // txtSupplierName
             // 
-            this.txtSupplierName.Location = new System.Drawing.Point(78, 104);
+            this.txtSupplierName.Location = new System.Drawing.Point(155, 125);
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.Size = new System.Drawing.Size(288, 20);
             this.txtSupplierName.TabIndex = 27;
@@ -926,15 +943,33 @@
             this.lblAddEditSupplier.TabIndex = 26;
             this.lblAddEditSupplier.Text = "Edit Supplier";
             // 
-            // pictureBox2
+            // numSupplierId
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(96, 99);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(409, 307);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.numSupplierId.Location = new System.Drawing.Point(155, 88);
+            this.numSupplierId.Name = "numSupplierId";
+            this.numSupplierId.Size = new System.Drawing.Size(120, 20);
+            this.numSupplierId.TabIndex = 30;
+            this.numSupplierId.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(70, 91);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 13);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Supplier ID:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(53, 128);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(93, 13);
+            this.label25.TabIndex = 32;
+            this.label25.Text = "Supplier Name:";
             // 
             // frmProductsSuppliers
             // 
@@ -942,8 +977,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(1438, 646);
-            this.Controls.Add(this.panelHome);
             this.Controls.Add(this.panelSuppliers);
+            this.Controls.Add(this.panelHome);
             this.Controls.Add(this.panelProducts);
             this.Controls.Add(this.pnlAddEditSupplier);
             this.Controls.Add(this.panelPackages);
@@ -953,10 +988,10 @@
             this.Controls.Add(this.btnNavExit);
             this.Controls.Add(this.btnNavPackages);
             this.Controls.Add(this.btnNavAgents);
+            this.Controls.Add(this.btnNavSupplier);
             this.Controls.Add(this.btnNavCustomers);
             this.Controls.Add(this.btnNavBookings);
             this.Controls.Add(this.btnNavMySales);
-            this.Controls.Add(this.btnNavSupplier);
             this.Controls.Add(this.btnNavProducts);
             this.Controls.Add(this.btnNavHome);
             this.Controls.Add(this.label5);
@@ -965,6 +1000,7 @@
             this.Load += new System.EventHandler(this.frmProductsSuppliers_Load);
             this.panelHome.ResumeLayout(false);
             this.panelHome.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelPackages.ResumeLayout(false);
             this.panelPackages.PerformLayout();
             this.panelProducts.ResumeLayout(false);
@@ -978,7 +1014,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlAddEditSupplier.ResumeLayout(false);
             this.pnlAddEditSupplier.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSupplierId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1062,6 +1098,9 @@
         private System.Windows.Forms.Button btnAddSupplier;
         private System.Windows.Forms.Button btnEditSupplier;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.NumericUpDown numSupplierId;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label7;
     }
 }
 
