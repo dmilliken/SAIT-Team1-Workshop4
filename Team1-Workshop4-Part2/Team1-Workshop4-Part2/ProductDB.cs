@@ -11,6 +11,10 @@ namespace Team1_Workshop4_Part2
 {
     public static class ProductDB
     {
+
+        // Methods for adding and updating the Product table
+        // ---------------------------------------------
+        // ---------------------------------------------
         //method for fetching product info
         public static Product GetProduct(int ProductId)
         {

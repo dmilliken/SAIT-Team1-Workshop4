@@ -11,6 +11,9 @@ namespace Team1_Workshop4_Part2
 {   //Brodie Zoschke Workshop 4 code start
     class SupplierDB
     {
+        // Methods for adding and updating the Suppliers table
+        // ---------------------------------------------
+        // ---------------------------------------------
         public static Supplier GetSupplier(int supplierId) 
         {
             //Create Connection to Database
@@ -91,13 +94,13 @@ namespace Team1_Workshop4_Part2
             return allSuppliers;
         }
 
-
         // Darcie : Problem -- The SupplierId Column does not auto increment. 
         // We can try to backup the database and change this later.
         // BZ : changed to allow manual entry of ID
-        //add a new supplier 
+
         public static int AddSupplier(Supplier supplier)
         {
+            // This method adds a new supplier 
             //open connevtion with database
             SqlConnection connection = TravelExpertsDB.GetConnection();
             //Create an insert statement for a new supplier for both ID and Name
@@ -199,7 +202,7 @@ namespace Team1_Workshop4_Part2
         // Darcie
         public static bool SupplierIdAvailable(int SupplierID)
         { 
-            // The supplierId column is not auto incremented and the current IDs are a mess. 
+            // The supplierId column is not auto incremented and the current ID #s are a mess. 
             // The workaround is that we will be allowing the user to choose it
             // But we need to check if the ID is in use.
             

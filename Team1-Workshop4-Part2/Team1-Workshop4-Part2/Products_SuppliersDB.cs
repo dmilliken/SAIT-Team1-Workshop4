@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 
 namespace Team1_Workshop4_Part2
 {
-    public static class Products_SuppliersDB  // Mark
+    public static class Products_SuppliersDB  // Mark 
     {
 
+        // Methods for adding and updating the Products_Suppliers table
+        // ---------------------------------------------
+        // ---------------------------------------------
   
         public static Supplier GetProductSupplier(int id)
         {   
@@ -153,10 +156,10 @@ namespace Team1_Workshop4_Part2
             }
         } //end method
 
-        // Darcie
-        // This method gets a ProductSupplierId by the selected product and supplier
+        // Darcie Milliken
         public static int GetProductSupplierId(int ProductId, int SupplierId)
         {
+            // This method gets a ProductSupplierId by the selected product and supplier
             // example select statement SELECT * from Products_Suppliers WHERE SupplierId = 3600 AND ProductId = 8 returns 46
             int ProductSupplierId = 0;
 
@@ -195,8 +198,9 @@ namespace Team1_Workshop4_Part2
             }
         }//end method
 
-        public static List<Supplier> GetProductSuppliers(int id)  // returns a list of suppliers for a given product ID
+        public static List<Supplier> GetProductSuppliers(int id)  
         {
+            // returns a list of suppliers for a given product ID
             // create list of suppliers
             List<Supplier> suppliers = new List<Supplier>();
 

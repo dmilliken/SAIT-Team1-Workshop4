@@ -7,7 +7,9 @@ using System.Windows.Forms;
 
 namespace Team1_Workshop4_Part2
 {
-    // This class was borrowed from the example we did in class on Day 3. 
+    // This class was borrowed from the example we did in class on Day 3 in the C# class. 
+    // ---------------------------------------------
+    // ---------------------------------------------
     public static class Validator
     {
         private static string title = "Entry Error";
