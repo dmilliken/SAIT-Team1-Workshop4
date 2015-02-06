@@ -236,10 +236,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(330, 15);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(234, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(355, 25);
+            this.label5.Size = new System.Drawing.Size(509, 37);
             this.label5.TabIndex = 1;
             this.label5.Text = "Travel Experts Database Access";
             // 
@@ -299,7 +299,7 @@
             this.btnNavBookings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavBookings.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNavBookings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNavBookings.Location = new System.Drawing.Point(1, 331);
+            this.btnNavBookings.Location = new System.Drawing.Point(1, 386);
             this.btnNavBookings.Name = "btnNavBookings";
             this.btnNavBookings.Size = new System.Drawing.Size(199, 56);
             this.btnNavBookings.TabIndex = 7;
@@ -312,7 +312,7 @@
             this.btnNavCustomers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnNavCustomers.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNavCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNavCustomers.Location = new System.Drawing.Point(1, 386);
+            this.btnNavCustomers.Location = new System.Drawing.Point(1, 331);
             this.btnNavCustomers.Name = "btnNavCustomers";
             this.btnNavCustomers.Size = new System.Drawing.Size(199, 56);
             this.btnNavCustomers.TabIndex = 8;
@@ -389,6 +389,7 @@
             // 
             // panelPackages
             // 
+            this.panelPackages.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelPackages.Controls.Add(this.dtEndDate);
             this.panelPackages.Controls.Add(this.btnSavePackage);
             this.panelPackages.Controls.Add(this.dtStartDate);
@@ -642,6 +643,7 @@
             // 
             // panelProducts
             // 
+            this.panelProducts.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelProducts.Controls.Add(this.label1);
             this.panelProducts.Controls.Add(this.btnRefresh);
             this.panelProducts.Controls.Add(this.lstSuppliers);
@@ -672,6 +674,7 @@
             // 
             // pnlAddProdToPkg
             // 
+            this.pnlAddProdToPkg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlAddProdToPkg.Controls.Add(this.label20);
             this.pnlAddProdToPkg.Controls.Add(this.label19);
             this.pnlAddProdToPkg.Controls.Add(this.cboProductSuppliers);
@@ -746,6 +749,7 @@
             // 
             // panelSuppliers
             // 
+            this.panelSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelSuppliers.Controls.Add(this.btnEditSupplier);
             this.panelSuppliers.Controls.Add(this.btnAddSupplier);
             this.panelSuppliers.Controls.Add(this.btnRemoveProductFromSupplier);
@@ -870,6 +874,7 @@
             // 
             // pnlMyCustomers
             // 
+            this.pnlMyCustomers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlMyCustomers.Controls.Add(this.label24);
             this.pnlMyCustomers.Controls.Add(this.pictureBox1);
             this.pnlMyCustomers.Location = new System.Drawing.Point(227, 56);
@@ -899,6 +904,7 @@
             // 
             // pnlAddEditSupplier
             // 
+            this.pnlAddEditSupplier.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlAddEditSupplier.Controls.Add(this.label25);
             this.pnlAddEditSupplier.Controls.Add(this.label7);
             this.pnlAddEditSupplier.Controls.Add(this.numSupplierId);
@@ -968,6 +974,7 @@
             // 
             // pnlBookings
             // 
+            this.pnlBookings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlBookings.Controls.Add(this.label2);
             this.pnlBookings.Controls.Add(this.pictureBox3);
             this.pnlBookings.Location = new System.Drawing.Point(212, 56);
