@@ -438,6 +438,7 @@ namespace Team1_Workshop4_Part2
 
             // Get the package ID
             int PackageId;
+            btnAddPackage.Enabled = false;
 
             if (Validator.IsPresent(comboBoxPackages))
             {
@@ -525,6 +526,9 @@ namespace Team1_Workshop4_Part2
 
             // Make the Products panel visible
             pnlAddProdToPkg.Visible = true;
+
+            // Disable the add package button until the user has saved
+            btnAddPackage.Enabled = false;
             
         }
 
@@ -570,6 +574,7 @@ namespace Team1_Workshop4_Part2
                     } // end catch
                     // Reload the packages combo box data
                     LoadPackagesComboBox();
+                    
 
                 } // end if for add pkg
                 else // edit the package
@@ -612,6 +617,18 @@ namespace Team1_Workshop4_Part2
                 } // end else
  
             }// end validator if
+            
+            //reset the controls
+            btnAddPackage.Enabled = true;
+            btnEditPackage.Enabled = true;
+            pnlAddProdToPkg.Visible = false;
+
+            txtPackageName.Enabled = false;
+            txtPkgDesc.Enabled = false;
+            dtStartDate.Enabled = false;
+            dtEndDate.Enabled = false;
+            txtPkgPrice.Enabled = false;
+            txtCommission.Enabled = false;
 
         } // end save package method
 
@@ -859,7 +876,7 @@ namespace Team1_Workshop4_Part2
                     } // end catch
                 }//end else
             }//end Val if
-
+            pnlAddEditSupplier.Visible = false;
         }
 
         private void btnAddSupplier_Click(object sender, EventArgs e)

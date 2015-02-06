@@ -156,7 +156,7 @@ namespace Team1_Workshop4_Part2
             }
         } //end method
 
-        // Darcie Milliken
+        // Darcie 
         public static int GetProductSupplierId(int ProductId, int SupplierId)
         {
             // This method gets a ProductSupplierId by the selected product and supplier
